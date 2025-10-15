@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MitarbeiterDashboard
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.2.
@@ -57,3 +58,7 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+=======
+# Mitarbeiter-Dashboard
+Übungsprojekt: Uum verwalten, von Mitarbeitern. Soll man hinzufügen können und bearbeiten können ...
+>>>>>>> b78ada029245984dd71c5485994c5c6003018169
