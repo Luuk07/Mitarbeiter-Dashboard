@@ -1,0 +1,46 @@
+/* Grundlegendes Layout */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  height: 100vh;
+}
+
+/* Container */
+.container {
+  background-color: white;
+  padding: 40px 60px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: start;
+}
+
+/* Header */
+.container h1 {
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2em;
+}
+
+/* Links */
+.container a {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 12px 24px;
+  text-decoration: none;
+  color: white;
+  background-color: #007bff;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+}
+
+/* Hover Effekt */
+.container a:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}

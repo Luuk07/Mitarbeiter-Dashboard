@@ -1,0 +1,111 @@
+.shape {
+  width: 600px;
+  padding: 24px 32px;
+  margin: 50px auto;
+  border: 2px solid #008b8b;
+  border-radius: 10px;
+  box-shadow: 3px 3px 12px rgba(0, 139, 139, 0.15);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0ffff; /* Sanftes Aqua */
+  color: #004d4d;
+}
+
+.shapeNotActive
+{
+  width: 600px;
+  padding: 24px 32px;
+  margin: 50px auto;
+  border: 2px solid red;
+  border-radius: 10px;
+  box-shadow: 3px 3px 12px rgba(0, 139, 139, 0.15);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0ffff; /* Sanftes Aqua */
+  color: red;
+}
+
+/* Name-Box oben */
+.name {
+  background-color: #008b8b;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 6px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* Attribut-Liste */
+.attributes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 1.05rem;
+  color: #003737;
+}
+
+/* Einzelne Einträge */
+.attributes p {
+  margin: 0;
+  padding: 10px 14px;
+  background-color: #d1f5f5;
+  border-left: 4px solid #008b8b;
+  border-radius: 5px;
+  font-weight: 500;
+  line-height: 1.4;
+  transition: background-color 0.2s ease;
+}
+
+/* Optional: Hover-Effekt für Lesbarkeit */
+.attributes p:hover {
+  background-color: #b9ebeb;
+}
+
+.onDelete {
+  display: inline-block;
+  padding: 10px 16px;
+  margin-top: 20px;
+  background-color: #ff4d4d; /* Rot für Löschaktion */
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+.onDelete:hover {
+  background-color: #e60000;
+}
+
+.router {
+  display: inline-block;
+  padding: 10px 16px; 
+  margin-top: 20px;    
+  background-color: #007bff; 
+  margin-left: 20px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+.router:hover {
+  background-color: #0056b3;
+}
+
+
+.isActive{
+  color: #003737;
+}
+
+.isNotActive{
+  color:red;
+}

@@ -1,0 +1,38 @@
+/* Container des Dialogs */
+.shape.confirm-dialog {
+  background-color: #fff;
+  padding: 24px 32px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Text im Dialog */
+.dialog-text {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+/* Button-Zeile */
+.dialog-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+/* OK-Button */
+.btn-ok {
+  padding: 8px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
+}
+
+.btn-ok:hover {
+  background-color: #d32f2f !important; /* dunkleres "warn" */
+  color: white;
+}

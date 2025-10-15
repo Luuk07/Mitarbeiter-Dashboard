@@ -1,0 +1,11 @@
+<div>
+  <ul>
+    @for(employee of employees; track employee.id){
+      <ul>
+        <app-employee-comp [employee]="employee"></app-employee-comp>
+      </ul>
+    } @empty {
+      <p class="AllEmpty">Bitte einen Mitarbeiter erstellen.</p>
+    }
+  </ul>
+</div>

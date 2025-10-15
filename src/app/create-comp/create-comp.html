@@ -1,0 +1,110 @@
+<div>
+  <div class="shape">
+   
+    @if(name){
+      <div class="name"> 
+          {{name}}
+      </div>
+    }@else {
+      <div class="name">
+      Dein Mitarbeiter
+    </div>
+    }
+      
+    <div class="attributes">
+      <label>
+         Name:
+        <input class="input" [(ngModel)]="name" />
+        @if (!name) {
+          <div class="pflicht" >
+              Name ist ein Pflichtfeld!
+          </div>
+       }
+      </label>
+      <label>
+        Geschlecht:
+        <mat-form-field>
+          <mat-select [(ngModel)]="gender"> 
+            <mat-option value="" disabled selected>Bitte wählen</mat-option>
+            <mat-option value="Männlich">Männlich</mat-option>
+            <mat-option value="Weiblich">Weiblich</mat-option>
+            <mat-option value="Divers">Divers</mat-option>
+          </mat-select>
+       </mat-form-field>
+         @if (!gender) {
+          <div class="pflicht">
+              Geschlecht ist ein Pflichtfeld!
+          </div>
+       }
+      </label>
+      <br />
+      <label>
+        Geburtstags:
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            [matDatepicker]="picker"
+            [(ngModel)]="birthday4UI"
+            name="dob"
+          />
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      </label>
+      <br />
+      <label>
+        Email:
+      <input class="input" [(ngModel)]="email" type="email" name="email" pattern=".*@.*"/>
+       @if (!email) {
+          <div class="pflicht">
+              Email ist ein Pflichtfeld!
+          </div>
+        }
+        @if(!email.includes('@')){
+           <div class="pflicht">
+              Email muss ein '@' enthalten!
+          </div>
+        }
+      </label>
+      <br />
+      <label>
+        Telefonnummer:
+        <input class="input" [(ngModel)]="phonenumber"  type="number" name="telefonnummer" />
+         @if (!phonenumber) {
+        <div class="pflicht">
+            Telefonnummer ist ein Pflichtfeld!
+        </div>
+       }
+      </label>
+      <br />
+      <label>
+        Abteilung:
+        <mat-form-field>
+          <mat-select [(ngModel)]="department"> 
+            <mat-option value="" disabled selected>Bitte wählen</mat-option>
+            <mat-option value="It">It</mat-option>
+            <mat-option value="Ausbildung">Ausbildung</mat-option>
+            <mat-option value="Kfm">Kfm</mat-option>
+            <mat-option value="Pfm">Pfm</mat-option>
+          </mat-select>
+       </mat-form-field>
+         @if (!department) {
+          <div class="pflicht">
+              Abteilung ist Pflichtfeld!
+          </div>
+       }
+      </label>
+      <br />
+      <label>
+        Ist Aktiv:
+        <input class="input" [(ngModel)]="isActive" type="checkbox" name="istAktiv" />
+      </label>
+      <button class="onConfirm" (click)="onConfirm()">
+        Bestätigen
+      </button>
+      <button class="onBreakUp" (click)="onBreakUp()">
+        Abbrechen
+      </button>
+    </div>
+  </div>
+</div>
