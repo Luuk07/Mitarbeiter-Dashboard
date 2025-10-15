@@ -45,7 +45,11 @@ export class EmployeeComp implements OnInit {
         // 2. Remove Dom Element
         element.remove();
     
-        console.log('Updated Employees:', this._shareDataService.allEmployees);
+
+        // Speichere das aktuelle Array aller Mitarbeiter als JSON-String im localStorage unter dem Schlüssel 'employees',
+        // damit die Daten auch nach einem Seitenneuladen im Browser erhalten bleiben.
+        // Der Schlüssel ist der Name worunter die Daten im local Storage gespeichert werden.
+        localStorage.setItem('employees', JSON.stringify(this._shareDataService.allEmployees));
       }
     });
   }
