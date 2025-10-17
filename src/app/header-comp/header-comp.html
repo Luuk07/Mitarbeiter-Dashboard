@@ -1,14 +1,19 @@
 <div class="container">
-  @if(!isOnCreate()){
+  @if(!isOnCreate() || isOnStatistic()){
     <p>
       <a routerLink="/create">create</a>
     </p>
   }
-  @else{
+  @if(isOnCreate() || isOnStatistic()){
     <p>
       <a routerLink="/home">Home</a>
     </p> 
   }
   
+  @if(!isOnStatistic()){
+    <p>
+      <a routerLink="/statistic">Statistik</a>
+    </p> 
+  }
   
 </div>

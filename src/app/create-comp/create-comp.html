@@ -14,12 +14,17 @@
     <div class="attributes">
       <label>
          Name:
-        <input class="input" [(ngModel)]="name" />
+        <input class="input" [(ngModel)]="name" [attr.maxlength]="maxlength" />
         @if (!name) {
           <div class="pflicht" >
               Name ist ein Pflichtfeld!
           </div>
        }
+       @if(name.length == maxlength){
+           <div class="pflicht">
+              Ihr Name ist zu lang!
+          </div>
+        }
       </label>
       <label>
         Geschlecht:
@@ -54,7 +59,7 @@
       <br />
       <label>
         Email:
-      <input class="input" [(ngModel)]="email" type="email" name="email" pattern=".*@.*"/>
+      <input class="input" [(ngModel)]="email" type="email" name="email" pattern=".*@.*" [attr.maxlength]="maxlength" />
        @if (!email) {
           <div class="pflicht">
               Email ist ein Pflichtfeld!
@@ -65,16 +70,22 @@
               Email muss ein '@' enthalten!
           </div>
         }
+        @if(email.length == maxlength){
+           <div class="pflicht">
+              Ihre Email ist zu lang!
+          </div>
+        }
       </label>
       <br />
       <label>
         Telefonnummer:
-        <input class="input" [(ngModel)]="phonenumber"  type="number" name="telefonnummer" />
+        <input class="input" [(ngModel)]="phonenumber" type="number" name="telefonnummer"/>
          @if (!phonenumber) {
         <div class="pflicht">
             Telefonnummer ist ein Pflichtfeld!
         </div>
-       }
+        }
+
       </label>
       <br />
       <label>

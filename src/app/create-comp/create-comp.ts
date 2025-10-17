@@ -42,7 +42,9 @@ export class CreateComp {
 
 
   @Output() employee = new EventEmitter<I_ifEmployee>();
- 
+  maxlength: number= 30;
+
+  //Employee attributes
   id = Date.now();
   birthday: Date = new Date();
   name= '';

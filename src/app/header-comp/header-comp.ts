@@ -16,7 +16,11 @@ export class HeaderComp {
 
   isOnCreate(): boolean
   {
-    return this.router.url === '/create';
+    return this.router.url.startsWith('/create')
+  }
+   isOnStatistic(): boolean
+  {
+    return this.router.url.startsWith('/statistic')
   }
 
 }
