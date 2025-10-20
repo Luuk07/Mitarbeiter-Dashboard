@@ -12,15 +12,7 @@ export class ShareFilterService {
     
   }
   setFilterDepartment(value: string ) {
-    this.filterValueGender = value;
-  }
-
-  
-applyCombinedFilter() {
-  const filterObj = {
-    gender: this.filterValueGender.toLowerCase(),
-    department: this.filterValueDepartment.toLowerCase(),
-    };
+    this.filterValueDepartment = value;
   }
 
 }
