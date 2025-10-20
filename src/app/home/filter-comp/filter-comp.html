@@ -1,46 +1,49 @@
+<div class ="filter-container">
+  <mat-form-field class="filter" appearance="outline">
+      <mat-label>Wähle Geschlecht</mat-label>
+      <mat-select [(value)]="selectedGender" (selectionChange)="applyFilterGender($event.value)">
+        <mat-option [value]="'alle'">Alle</mat-option>
+          <mat-option [value]="'Männlich'">
+            Männlich
+          </mat-option>
+          <mat-option [value]="'Weiblich'">
+            Weiblich
+          </mat-option>
+          <mat-option [value]="'Divers'">
+            Divers
+          </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Wähle Geschlecht</mat-label>
-     <mat-select [(value)]="selectedGender" (selectionChange)="applyFilterGender($event.value)">
-      <mat-option [value]="'alle'">Alle</mat-option>
-        <mat-option [value]="'Männlich'">
-          Männlich
-        </mat-option>
-         <mat-option [value]="'Weiblich'">
-          Weiblich
-        </mat-option>
-         <mat-option [value]="'Divers'">
-          Divers
-        </mat-option>
-     </mat-select>
-  </mat-form-field>>
+
+    <mat-form-field class="filter" appearance="outline">
+      <mat-label>Wähle Abteilung</mat-label>
+      <mat-select [(value)]="selectedDepartment" (selectionChange)="applyFilterDepartment($event.value)">
+        <mat-option [value]="'alle'">Alle</mat-option>
+          <mat-option [value]="'It'">
+            IT
+          </mat-option>
+          <mat-option [value]="'Ausbildung'">
+            Ausbildung
+          </mat-option>
+          <mat-option [value]="'Kfm'">
+            Kfm
+          </mat-option>
+          <mat-option [value]="'Pfm'">
+            Pfm
+          </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="filter" appearance="outline">
+      <mat-label>Ist Aktiv?</mat-label>
+      <mat-select [(value)]="isAktiv" (selectionChange)="applyFilterIsActive($event.value)">
+          <mat-option [value]="undefined">Alle</mat-option>
+          <mat-option [value]="true">Ja</mat-option>
+          <mat-option [value]="false">Nein</mat-option>
+      </mat-select>
+    </mat-form-field>
 
 
-  <mat-form-field>
-    <mat-label>Wähle Abteilung</mat-label>
-     <mat-select [(value)]="selectedDepartment" (selectionChange)="applyFilterDepartment($event.value)">
-      <mat-option [value]="'alle'">Alle</mat-option>
-        <mat-option [value]="'It'">
-          IT
-        </mat-option>
-         <mat-option [value]="'Ausbildung'">
-          Ausbildung
-        </mat-option>
-         <mat-option [value]="'Kfm'">
-          Kfm
-        </mat-option>
-        <mat-option [value]="'Pfm'">
-          Pfm
-        </mat-option>
-     </mat-select>
-  </mat-form-field>>
-
-  <mat-form-field>
-    <mat-label>Ist Aktiv?</mat-label>
-     <mat-select [(value)]="isAktiv" (selectionChange)="applyFilterIsActive($event.value)">
-        <mat-option [value]="undefined">Akle</mat-option>
-        <mat-option [value]="true">Ja</mat-option>
-        <mat-option [value]="false">Nein</mat-option>
-     </mat-select>
-  </mat-form-field>>
-
+</div>
+ 
