@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { ShareDataService } from '../create-comp/share-data-service';
+import { ShareFilterService } from '../home/filter-comp/share-filter-service';
 
 // Header with routing links
 @Component({
@@ -11,8 +13,10 @@ import { Router } from '@angular/router';
   styleUrl: './header-comp.css'
 })
 export class HeaderComp {
-
+  readonly data = inject(ShareDataService)
+  readonly filter = inject(ShareFilterService)
   readonly router = inject(Router);
+
 
   isOnCreate(): boolean
   {
