@@ -25,6 +25,7 @@ export class FilterComp {
   dataSource = new MatTableDataSource(this.service.allEmployees);
   selectedGender = 'alle';
   selectedDepartment = 'alle';
+  isAktiv: boolean;
 
   constructor() {
     this.dataSource = new MatTableDataSource(this.service.allEmployees);
@@ -47,6 +48,18 @@ export class FilterComp {
     this.dataSource.filter = filterValue
     this.filterService.setFilterDepartment(filterValue);
   }
+  applyFilterIsActive(filterValue: boolean) { 
+    if(filterValue === undefined){
+      this.filterService.setFilterIsActive(undefined);
+    }else{
+      this.dataSource.filter = filterValue.toString();
+      this.filterService.setFilterIsActive(filterValue);
+    }
+
+  }
+
 }
+
+
 
 

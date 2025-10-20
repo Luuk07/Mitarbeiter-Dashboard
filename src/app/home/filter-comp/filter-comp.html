@@ -35,5 +35,12 @@
      </mat-select>
   </mat-form-field>>
 
-
+  <mat-form-field>
+    <mat-label>Ist Aktiv?</mat-label>
+     <mat-select [(value)]="isAktiv" (selectionChange)="applyFilterIsActive($event.value)">
+        <mat-option [value]="undefined">Akle</mat-option>
+        <mat-option [value]="true">Ja</mat-option>
+        <mat-option [value]="false">Nein</mat-option>
+     </mat-select>
+  </mat-form-field>>
 

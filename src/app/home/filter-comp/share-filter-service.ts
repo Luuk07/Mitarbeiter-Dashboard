@@ -8,6 +8,7 @@ export class ShareFilterService {
   readonly service = inject(ShareDataService)
   filterValueGender: string = 'alle';
   filterValueDepartment: string = 'alle';
+  filterValueIsActive: boolean;
    
   
   setFilterGendner(value: string ) {
@@ -17,12 +18,18 @@ export class ShareFilterService {
   setFilterDepartment(value: string ) {
     this.filterValueDepartment = value;
   }
+  setFilterIsActive(value: boolean ) {
+    this.filterValueIsActive = value;
+  }
+
 
   // Getter to retrieve filtered employees based on current filter values
   // Getter is to update automatically when filter values change
   get filteredEmployees() {
     return this.service.allEmployees.filter(emp =>
       (this.filterValueGender === 'alle' || emp.gender === this.filterValueGender) &&
-      (this.filterValueDepartment === 'alle' || emp.department === this.filterValueDepartment));
+      (this.filterValueDepartment === 'alle' || emp.department === this.filterValueDepartment) &&
+      (this.filterValueIsActive === undefined || emp.isActive === this.filterValueIsActive)
+    );
   }
 }
