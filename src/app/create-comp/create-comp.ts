@@ -135,7 +135,10 @@ export class CreateComp {
     // damit die Daten auch nach einem Seitenneuladen im Browser erhalten bleiben.
     // Der Schlüssel ist der Name worunter die Daten im local Storage gespeichert werden.
     localStorage.setItem('employees', JSON.stringify(this._shareDataService.allEmployees));
-      
+
+    employeeData.name = this.name.toLowerCase();
+    console.log('name', this.name);
+    console.log('employeeData', employeeData); 
     //route to home site
     this._route.navigate(['/home']);
 

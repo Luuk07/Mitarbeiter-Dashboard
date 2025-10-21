@@ -3,14 +3,14 @@
     @for(employee of employees; track employee.id){
       @if(((filterService.filterValueGender === employee.gender || filterService.filterValueGender === 'alle')&&
         (filterService.filterValueDepartment === employee.department || filterService.filterValueDepartment === 'alle') && 
-        (filterService.filterValueIsActive === employee.isActive || filterService.filterValueIsActive === undefined)))
+        (filterService.filterValueIsActive === employee.isActive || filterService.filterValueIsActive === undefined)) &&
+        filterService.filterValueName === '' || employee.name.includes(filterService.filterValueName.toLowerCase()))
         {
-          @if(filterService.filterValueName === '' || employee.name.includes(filterService.filterValueName)){
             <ul>
               <app-employee-comp [employee]="employee"></app-employee-comp>
             </ul>
-          } 
         }
+       
     } @empty {
       <p class="AllEmpty">Bitte einen Mitarbeiter erstellen.</p>
     }

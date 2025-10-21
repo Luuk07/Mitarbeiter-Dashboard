@@ -18,7 +18,6 @@ export class EmployeesListComp implements OnInit{
    employees: I_ifEmployee[] = [];
 
    ngOnInit() {
-     console.log('filterService.filterValueDepartment', this.filterService.filterValueDepartment);
      this.addFromService()
    }
 
