@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ShareDataService } from '../create-comp/share-data-service';
 
+// Employee Statistics Component
 @Component({
   selector: 'app-employee-statistics',
   imports: [],

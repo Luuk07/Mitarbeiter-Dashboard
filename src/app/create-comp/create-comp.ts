@@ -136,9 +136,9 @@ export class CreateComp {
     // Der Schlüssel ist der Name worunter die Daten im local Storage gespeichert werden.
     localStorage.setItem('employees', JSON.stringify(this._shareDataService.allEmployees));
 
+    // save name in lowercase for filtering
     employeeData.name = this.name.toLowerCase();
-    console.log('name', this.name);
-    console.log('employeeData', employeeData); 
+
     //route to home site
     this._route.navigate(['/home']);
 
@@ -166,19 +166,6 @@ export class CreateComp {
     }
   }
 
-  // get birthday4UI(): string {
-  //   const date = new Date(this.birthday);
-  //   console.log('date',date.toISOString());
-    
-  //   const year = this.birthday?.toISOString();
-  //   const month = ('0' + (date?.getMonth() + 1)).slice(-2);
-  //   const day = ('0' + date?.getDate()).slice(-2);
-  //   return `${year}-${month}-${day}`;
-  // }
-
-  // set birthday4UI(value: string) {
-  //   this.birthday = new Date(value);
-  // }
 
   //Set Employee attributes
   setEmployeeAttributes(_employee?: I_ifEmployee) {

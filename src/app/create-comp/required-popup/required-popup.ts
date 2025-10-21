@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
+// Popup to show required fields
 @Component({
   selector: 'app-required-popup',
   imports: [MatDialogModule],

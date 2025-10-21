@@ -26,7 +26,7 @@ export class ShareDataService  {
   constructor(){
     if(typeof window !== 'undefined')
     {
-     
+      //Take data from local storage
       const employees = localStorage.getItem('employees');
       console.log('employee', employees);
       if(employees)
@@ -51,7 +51,7 @@ export class ShareDataService  {
     }
  
    }
-
+   //Get Count of Employees attributes
    get getEmployeeAktiveCount(){
     return this.employeeAktiveCount = this.allEmployees.filter(emp => emp.isActive).length;
    }
@@ -75,8 +75,5 @@ export class ShareDataService  {
 
    }
 
-
-
-  
 }
 

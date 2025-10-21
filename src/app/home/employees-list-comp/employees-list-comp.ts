@@ -16,7 +16,7 @@ export class EmployeesListComp implements OnInit{
    constructor(public _shareDataService:ShareDataService){}
    //List with employyes
    employees: I_ifEmployee[] = [];
-
+   
    ngOnInit() {
      this.addFromService()
    }

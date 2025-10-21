@@ -9,7 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { I_ifEmployee } from '../../models/interfaces/employee.model';
 import { MatInputModule } from '@angular/material/input'; 
-
+// Filter Component for Employees
 @Component({
   selector: 'app-filter-comp',
   imports: [MatFormFieldModule,
@@ -23,19 +23,22 @@ import { MatInputModule } from '@angular/material/input';
   styleUrl: './filter-comp.css'
 })
 export class FilterComp {
+  //Inject Services
   readonly service = inject(ShareDataService)
   readonly filterService = inject(ShareFilterService)
+  //Data source for table
   dataSource = new MatTableDataSource(this.service.allEmployees);
+  //Filter values
   selectedGender = 'alle';
   selectedDepartment = 'alle';
   isAktiv: boolean;
   name = '';
   
-
+  
   constructor() {
     this.dataSource = new MatTableDataSource(this.service.allEmployees);
     this.dataSource.filterPredicate = (data: I_ifEmployee, filter: string) => {
-    if (!filter) return true; // Wenn leer, alles zeigen
+    if (!filter) return true; 
     console.log('Filter:', filter);
     return data.gender.toLowerCase().includes(filter) && data.department.toLowerCase().includes(filter);
 

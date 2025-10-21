@@ -17,7 +17,7 @@ export class HeaderComp {
   readonly filter = inject(ShareFilterService)
   readonly router = inject(Router);
 
-
+  // Check current route
   isOnCreate(): boolean
   {
     return this.router.url.startsWith('/create')
