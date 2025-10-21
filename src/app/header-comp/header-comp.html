@@ -1,10 +1,10 @@
 <div class="container">
-  @if(!isOnCreate() || isOnStatistic()){
+  @if(!isOnCreate()){
     <p>
       <a routerLink="/create">create</a>
     </p>
   }
-  @if(isOnCreate() || isOnStatistic()){
+  @if(!isOnHome()){
     <p>
       <a routerLink="/home">Home</a>
     </p> 
@@ -15,7 +15,11 @@
       <a routerLink="/statistic">Statistic</a>
     </p> 
   }
-  
+   @if(!isOnTable()){
+    <p>
+      <a routerLink="/table">Tabelle</a>
+    </p> 
+  }
   <h1 class ="title" >
     Alle Mitarbeiter: {{data.allEmployees.length}}
     <p>

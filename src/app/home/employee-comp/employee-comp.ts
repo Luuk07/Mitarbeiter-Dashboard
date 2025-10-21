@@ -6,11 +6,13 @@ import { Router } from '@angular/router';
 import { MatButtonModule} from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { DelConfirmationPopup } from '../del-confirmation-popup/del-confirmation-popup';
+import {MatTableModule} from '@angular/material/table';
+
 
 //Employee Component
 @Component({
   selector: 'app-employee-comp',
-  imports: [DatePipe, CommonModule, MatButtonModule],
+  imports: [DatePipe, CommonModule, MatButtonModule, MatTableModule],
   templateUrl: './employee-comp.html',
   styleUrl: './employee-comp.css',
   encapsulation: ViewEncapsulation.None  
@@ -18,9 +20,12 @@ import { DelConfirmationPopup } from '../del-confirmation-popup/del-confirmation
 export class EmployeeComp implements OnInit {
   //Dialog get instanz of MatDialog
   //MatDialog = Is the the service for modale dialogs like the Confirmation Dialog
+  readonly emp = inject(ShareDataService)
   readonly dialog = inject(MatDialog)
  
   @Input() employee?: I_ifEmployee;
+  
+
 
   constructor(
   public _shareDataService:ShareDataService,

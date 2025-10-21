@@ -26,5 +26,13 @@ export class HeaderComp {
   {
     return this.router.url.startsWith('/statistic')
   }
+  isOnTable(): boolean
+  {
+    return this.router.url.startsWith('/table')
+  }
+  isOnHome(): boolean
+  {
+    return this.router.url.startsWith('/home') || this.router.url === '/'
+  }
 
 }
