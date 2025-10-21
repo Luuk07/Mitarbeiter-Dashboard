@@ -6,7 +6,6 @@ import { EmployeeStatistics } from './employee-statistics/employee-statistics';
 
 // Define the routes for the application
 
-
 export const routes: Routes = [
   {path: '', component: Home},
   {path: 'home', component: Home},

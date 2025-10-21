@@ -34,17 +34,17 @@ export class FilterComp {
   isAktiv: boolean;
   name = '';
   
-  
+  //Define filter function
+  //If filter is empty, show all
+  //Otherwise filter according to selected values
   constructor() {
     this.dataSource = new MatTableDataSource(this.service.allEmployees);
     this.dataSource.filterPredicate = (data: I_ifEmployee, filter: string) => {
     if (!filter) return true; 
-    console.log('Filter:', filter);
-    return data.gender.toLowerCase().includes(filter) && data.department.toLowerCase().includes(filter);
-
+    return true;
   }
 }
-
+ //Apply filters
   applyFilterGender(filterValue: string) 
   { 
     this.dataSource.filter = filterValue

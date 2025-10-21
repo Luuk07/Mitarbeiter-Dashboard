@@ -1,6 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { ShareDataService } from '../../create-comp/share-data-service';
 
+
+//Service to share filter values between components
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +13,7 @@ export class ShareFilterService {
   filterValueIsActive: boolean;
   filterValueName: string = '';
    
-  
+  // Setter methods to update filter values
   setFilterGendner(value: string ) {
     this.filterValueGender = value;
     
