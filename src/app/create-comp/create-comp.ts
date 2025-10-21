@@ -45,8 +45,10 @@ export class CreateComp {
   maxlength: number= 30;
 
   //Employee attributes
+  today: Date = new Date();
   id = Date.now();
   birthday: Date = new Date();
+  age = 0;
   name= '';
   email? = '';
   gender = '';
@@ -71,10 +73,14 @@ export class CreateComp {
       dateOfBirth: this.birthday,
       department: this.department,
       isActive: this.isActive,
-      photoPath: '',
+      today: this.today,
+      age: this.age,
+      photoPath: ''
     };
-
-
+    //calculate age
+    this.birthday = new Date(employeeData.dateOfBirth);
+    this.today = new Date(employeeData.today);
+    employeeData.age = this.today.getFullYear() - this.birthday.getFullYear();
     //Save all Errors
     const errors = [];
 
@@ -104,17 +110,23 @@ export class CreateComp {
     {
       errors.push('Bitte gib deine Telefonnumer an');
     }
-    console.log("employeeData.phoneNumber", employeeData.phoneNumber)
+    if((this.birthday.getDate() > this.today.getDate())){
+      errors.push('Dein Geburtstag kann nicht in der Zukunft liegen!');
+    }
+   
 
     if(!employeeData.name || !employeeData.name.trim() || 
       !employeeData.email || !employeeData.email.trim() ||
       !employeeData.department || !employeeData.gender || employeeData.phoneNumber === null
-      || !employeeData.email.includes('@')){
+      || !employeeData.email.includes('@') || (this.birthday.getDate() > this.today.getDate()))
+      {
         this.dialog.open(RequiredPopup).afterClosed().subscribe(() => {
           return;
         }) 
         
     }
+
+   
 
     // If more than 0 errors -> employee cant be created 
     if (errors.length > 0) {
@@ -131,6 +143,7 @@ export class CreateComp {
       this._shareDataService.allEmployees.push(employeeData);
     }
 
+    employeeData.name = employeeData.name.toLowerCase();
     // Speichere das aktuelle Array aller Mitarbeiter als JSON-String im localStorage unter dem Schlüssel 'employees',
     // damit die Daten auch nach einem Seitenneuladen im Browser erhalten bleiben.
     // Der Schlüssel ist der Name worunter die Daten im local Storage gespeichert werden.

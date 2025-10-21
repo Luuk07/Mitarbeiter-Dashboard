@@ -8,6 +8,8 @@ export interface I_ifEmployee{
   phoneNumber?: number;
   dateOfBirth:Date;
   department:string;
-  isActive:boolean
+  isActive:boolean;
   photoPath?:string;
+  age?:number;
+  today?:Date;
 }
