@@ -1,14 +1,16 @@
 <div>
   <ul>
     @for(employee of employees; track employee.id){
-      @if((filterService.filterValueGender === employee.gender || filterService.filterValueGender === 'alle')&&
-      (filterService.filterValueDepartment === employee.department || filterService.filterValueDepartment === 'alle') && 
-       (filterService.filterValueIsActive === employee.isActive || filterService.filterValueIsActive === undefined)) 
-      {
-        <ul>
-          <app-employee-comp [employee]="employee"></app-employee-comp>
-        </ul>
-      }
+      @if(((filterService.filterValueGender === employee.gender || filterService.filterValueGender === 'alle')&&
+        (filterService.filterValueDepartment === employee.department || filterService.filterValueDepartment === 'alle') && 
+        (filterService.filterValueIsActive === employee.isActive || filterService.filterValueIsActive === undefined)))
+        {
+          @if(filterService.filterValueName === '' || employee.name.includes(filterService.filterValueName)){
+            <ul>
+              <app-employee-comp [employee]="employee"></app-employee-comp>
+            </ul>
+          } 
+        }
     } @empty {
       <p class="AllEmpty">Bitte einen Mitarbeiter erstellen.</p>
     }

@@ -1,1 +1,18 @@
-<p>employee-statistics works!</p>
+<div class="statistic-container">
+  <div class = "isActive">
+    <h1>Ist Aktiv</h1>
+    <p>Aktive Mitarbeiter: {{data.getEmployeeAktiveCount}}</p>
+    <p>Inaktive Mitarbeiter: {{data.getEmployeeInAktiveCount}}</p>
+  </div>
+  <div class="gender">
+    <h1>Geschlecht</h1>
+    <p>Weibliche Mitarbeiter: {{data.getEmployeeFemaleCount}}</p>
+    <p>Männliche Mitarbeiter: {{data.getEmployeeMaleCount}}</p>
+    <p>Diverse Mitarbeiter: {{data.getEmployeeDiverseCount}}</p>
+  </div>
+  <div class="age">
+    <h1>Alter</h1>
+    <p>Unter 18 Jahre alte Mitarbeiter: {{data.getEmployeeUnderAgeCount}}</p>
+    <p>Volljährige Mitarbeiter: {{data.getEmoloyeeOfAgeCount}}</p>
+  </div>
+</div>

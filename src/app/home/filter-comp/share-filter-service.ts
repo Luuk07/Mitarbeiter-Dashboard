@@ -9,6 +9,7 @@ export class ShareFilterService {
   filterValueGender: string = 'alle';
   filterValueDepartment: string = 'alle';
   filterValueIsActive: boolean;
+  filterValueName: string = '';
    
   
   setFilterGendner(value: string ) {
@@ -20,6 +21,11 @@ export class ShareFilterService {
   }
   setFilterIsActive(value: boolean ) {
     this.filterValueIsActive = value;
+  }
+
+  setFilterName(value: string ) {
+    this.filterValueName = value;
+   
   }
 
 

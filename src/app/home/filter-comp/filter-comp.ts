@@ -1,21 +1,24 @@
-import { Component, inject} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ShareDataService } from '../../create-comp/share-data-service';
 import { ShareFilterService } from './share-filter-service';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import {FormsModule} from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core'; // mat-option ist im core!
+import { MatOptionModule } from '@angular/material/core';
 import { I_ifEmployee } from '../../models/interfaces/employee.model';
-
+import { MatInputModule } from '@angular/material/input'; 
 
 @Component({
   selector: 'app-filter-comp',
   imports: [MatFormFieldModule,
     MatSelectModule,
     MatOptionModule, 
-    MatCheckboxModule],
+    MatCheckboxModule,
+    FormsModule,
+    MatInputModule 
+    ],
   templateUrl: './filter-comp.html',
   styleUrl: './filter-comp.css'
 })
@@ -26,6 +29,8 @@ export class FilterComp {
   selectedGender = 'alle';
   selectedDepartment = 'alle';
   isAktiv: boolean;
+  name = '';
+  
 
   constructor() {
     this.dataSource = new MatTableDataSource(this.service.allEmployees);
@@ -55,11 +60,13 @@ export class FilterComp {
       this.dataSource.filter = filterValue.toString();
       this.filterService.setFilterIsActive(filterValue);
     }
+  }
 
+  
+  onNameInputChange(value: string) {
+    this.filterService.setFilterName(value);
+    console.log('Name input changed:', value);
+  
   }
 
 }
-
-
-
-
