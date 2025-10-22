@@ -7,13 +7,14 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { I_ifEmployee } from '../models/interfaces/employee.model';
+import { CommonModule } from '@angular/common';
 
 
 
 
 @Component({
   selector: 'app-table-comp',
-  imports: [MatTableModule, DatePipe, MatSortModule, MatSort],
+  imports: [MatTableModule, DatePipe, MatSortModule, MatSort, CommonModule],
   templateUrl: './table-comp.html',
   styleUrl: './table-comp.css'
 })

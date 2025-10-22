@@ -18,3 +18,13 @@
 .router:hover {
   background-color: #0056b3;
 }
+
+
+
+.isActive{
+  color: #003737;
+}
+
+.isNotActive{
+  color:red;
+}
