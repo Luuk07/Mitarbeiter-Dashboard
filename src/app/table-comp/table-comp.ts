@@ -1,18 +1,46 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, ViewChild } from '@angular/core';
 import { ShareDataService } from '../create-comp/share-data-service';
 import {MatTableModule} from '@angular/material/table';
-import { I_ifEmployee } from '../models/interfaces/employee.model';
 import{DatePipe} from '@angular/common';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSort, Sort } from '@angular/material/sort';
+import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
+import { I_ifEmployee } from '../models/interfaces/employee.model';
+
+
+
 
 @Component({
   selector: 'app-table-comp',
-  imports: [MatTableModule, DatePipe],
+  imports: [MatTableModule, DatePipe, MatSortModule, MatSort],
   templateUrl: './table-comp.html',
   styleUrl: './table-comp.css'
 })
 export class TableComp {
+  // Injecting the ShareDataService to access employee data
   readonly emp = inject(ShareDataService)
-  dataSource = this.emp.allEmployees;
-  displayedColumns: string[] = ['gender', 'name', 'birthday', 'email', 'phoneNumber', 'department', 'isActive', 'age', 'today'];
+  // Data source for the table
+  dataSource = new MatTableDataSource(this.emp.allEmployees);
+  // Columns to be displayed
+  displayedColumns: string[] = ['gender', 'name', 'birthday', 'email', 'phoneNumber', 'department', 'isActive', 'age', 'today', 'delete'];
    
+  // Acces to the MatSort directive from the template
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor(
+    private _route: Router
+  ) {}  
+
+  // Datasource get the knowledge of sorting after view initialization
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
+
+
+  onEdit(employee: I_ifEmployee): void {
+    this._route.navigate(['/create'], {queryParams: {employeeID: employee?.id?.toString()}});
+  }
+
+
 }

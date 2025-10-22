@@ -1,8 +1,8 @@
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
     
     <ng-container matColumnDef="gender">
-      <th mat-header-cell *matHeaderCellDef> Geschlecht </th>
+      <th mat-header-cell mat-sort-header *matHeaderCellDef> Geschlecht </th>
       <td mat-cell *matCellDef="let element"> {{element?.gender}} </td>
     </ng-container>
 
@@ -25,30 +25,39 @@
     </ng-container>
 
     <ng-container matColumnDef="phoneNumber">
-      <th mat-header-cell *matHeaderCellDef> Telefonnummer </th>
+      <th mat-header-cell  *matHeaderCellDef> Telefonnummer </th>
       <td mat-cell *matCellDef="let element"> {{element?.phoneNumber}} </td>
     </ng-container>
 
     <ng-container matColumnDef="department">
-      <th mat-header-cell *matHeaderCellDef> Abteilung </th>
+      <th mat-header-cell mat-sort-header *matHeaderCellDef> Abteilung </th>
       <td mat-cell *matCellDef="let element"> {{element?.department}} </td>
     </ng-container>
 
     <ng-container matColumnDef="today">
-      <th mat-header-cell *matHeaderCellDef> Letzte Änderung am: </th>
+      <th mat-header-cell mat-sort-header *matHeaderCellDef> Letzte Änderung am: </th>
       <td mat-cell *matCellDef="let element"> {{element?.today | date:'medium' }} </td>
     </ng-container>
 
     <ng-container matColumnDef="age">
-      <th mat-header-cell *matHeaderCellDef> Alter: </th>
+      <th mat-header-cell mat-sort-header *matHeaderCellDef> Alter: </th>
       <td mat-cell *matCellDef="let element"> {{element?.age}} </td>
     </ng-container>
 
     <ng-container matColumnDef="isActive">
-      <th mat-header-cell *matHeaderCellDef> Aktiv: </th>
+      <th mat-header-cell mat-sort-header *matHeaderCellDef> Aktiv: </th>
       <td mat-cell *matCellDef="let element"> {{element?.isActive  ? 'Ja' : 'Nein'}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Bearbeiten: </th>
+      <td mat-cell *matCellDef="let element"> <button class="router"(click)="onEdit(element)">
+          Edit
+        </button> 
+     </td>
+    </ng-container>
+
+   
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
