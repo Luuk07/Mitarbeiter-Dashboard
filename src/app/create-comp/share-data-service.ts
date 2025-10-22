@@ -3,6 +3,7 @@ import { Injectable, OnInit} from '@angular/core';
 import { I_ifEmployee } from '../models/interfaces/employee.model';
 import { T } from '@angular/cdk/keycodes'
 import { BehaviorSubject } from 'rxjs';
+import { ApiService } from '../services/api-service';
 
 
 // To save and share employee Data 
@@ -23,34 +24,52 @@ export class ShareDataService  {
   employeeUnderAgeCount: number = 0;
   emoloyeeOfAgeCount: number = 0;
   
-  constructor(){
+  constructor(
+    private _apiService: ApiService
+  ){
+    this.getAllEmployeesFromJsonServer();
     if(typeof window !== 'undefined')
     {
       //Take data from local storage
-      const employees = localStorage.getItem('employees');
-      console.log('employee', employees);
-      if(employees)
-      { 
-         
-         try{
-            this.allEmployees = JSON.parse(employees) as I_ifEmployee[];
-          }
-          catch (error) {
-          console.error('Fehler beim Parsen der Employee-Daten aus localStorage:', error);
-          this.allEmployees = [];
-        }
 
-      }
-      else {
-        // Falls serverseitig, initialisiere leer oder mit Defaultwerten
-        this.allEmployees = [];
-      }
+      
+      // const employees = localStorage.getItem('employees');
+
+      // if(employees)
+      // { 
+         
+      //    try{
+      //       (JSON.parse(employees) as I_ifEmployee[]).forEach(emp => {
+      //         this.allEmployees.push(emp);
+      //       });
+      //       // this.allEmployees.push();
+      //     }
+      //     catch (error) {
+      //     console.error('Fehler beim Parsen der Employee-Daten aus localStorage:', error);
+      //     this.allEmployees = [];
+      //   }
+
+      // }
+      // else {
+      //   // Falls serverseitig, initialisiere leer oder mit Defaultwerten
+      //   this.allEmployees = [];
+      // }
     }
     else{
       this.allEmployees = [];
     }
  
    }
+
+
+  getAllEmployeesFromJsonServer() { 
+    this._apiService.getAllEmployees().subscribe((_allEmployees: I_ifEmployee[]) => {
+      _allEmployees.forEach(emp => {
+        this.allEmployees.push(emp);
+      });
+      
+    });
+  }
    //Get Count of Employees attributes
    get getEmployeeAktiveCount(){
     return this.employeeAktiveCount = this.allEmployees.filter(emp => emp.isActive).length;

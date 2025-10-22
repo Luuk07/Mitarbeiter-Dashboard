@@ -7,6 +7,7 @@ import { MatButtonModule} from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { DelConfirmationPopup } from '../del-confirmation-popup/del-confirmation-popup';
 import {MatTableModule} from '@angular/material/table';
+import { ApiService } from '../../services/api-service';
 
 
 //Employee Component
@@ -29,7 +30,8 @@ export class EmployeeComp implements OnInit {
 
   constructor(
   public _shareDataService:ShareDataService,
-  private _route: Router
+  private _route: Router,
+  private _apiService:ApiService
 ) {}
 
   ngOnInit(): void {
@@ -54,7 +56,11 @@ export class EmployeeComp implements OnInit {
         // Speichere das aktuelle Array aller Mitarbeiter als JSON-String im localStorage unter dem Schlüssel 'employees',
         // damit die Daten auch nach einem Seitenneuladen im Browser erhalten bleiben.
         // Der Schlüssel ist der Name worunter die Daten im local Storage gespeichert werden.
-        localStorage.setItem('employees', JSON.stringify(this._shareDataService.allEmployees));
+
+        //localStorage.setItem('employees', JSON.stringify(this._shareDataService.allEmployees));
+         this._apiService.deletEmployeeById(employeeId).subscribe((emplpoyee: I_ifEmployee) => {
+              console.log(' Mitarbeiter deleted:', emplpoyee);
+        });
       }
     });
   }

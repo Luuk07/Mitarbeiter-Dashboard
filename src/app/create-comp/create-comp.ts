@@ -20,6 +20,7 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { ApiService } from '../services/api-service';
 
 //Create the employee
 @Component({
@@ -37,7 +38,8 @@ export class CreateComp {
   constructor(
     private _shareDataService: ShareDataService, 
     private route: ActivatedRoute,
-    private _route: Router
+    private _route: Router,
+    private _apiService: ApiService
   ){}
 
 
@@ -126,6 +128,7 @@ export class CreateComp {
         
     }
 
+
    
 
     // If more than 0 errors -> employee cant be created 
@@ -147,7 +150,12 @@ export class CreateComp {
     // Speichere das aktuelle Array aller Mitarbeiter als JSON-String im localStorage unter dem Schlüssel 'employees',
     // damit die Daten auch nach einem Seitenneuladen im Browser erhalten bleiben.
     // Der Schlüssel ist der Name worunter die Daten im local Storage gespeichert werden.
-    localStorage.setItem('employees', JSON.stringify(this._shareDataService.allEmployees));
+
+    //localStorage.setItem('employees', JSON.stringify(this._shareDataService.allEmployees));
+ 
+    this._apiService.addNewEmployee(employeeData).subscribe((newEmployee: I_ifEmployee) => {
+      console.log('Neuer Mitarbeiter hinzugefügt:', newEmployee);
+    });
 
     // save name in lowercase for filtering
     employeeData.name = this.name.toLowerCase();

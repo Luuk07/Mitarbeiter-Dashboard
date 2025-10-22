@@ -1,0 +1,40 @@
+{
+  "employees": [
+    {
+      "id": "3",
+      "name": "Julia Becker",
+      "gender": "weiblich",
+      "dateOfBirth": "1995-02-10",
+      "department": "Entwicklung",
+      "isActive": false,
+      "age": 30,
+      "today": "2025-10-22"
+    },
+    {
+      "id": "4",
+      "name": "Michael Weber",
+      "gender": "männlich",
+      "email": "m.weber@example.com",
+      "phoneNumber": 491761234567,
+      "dateOfBirth": "1978-12-01",
+      "department": "HR",
+      "isActive": true,
+      "photoPath": "/assets/images/michael.jpg",
+      "age": 46,
+      "today": "2025-10-22"
+    },
+    {
+      "id": "5",
+      "name": "Laura Klein",
+      "gender": "weiblich",
+      "email": "laura.klein@example.com",
+      "phoneNumber": 491601234567,
+      "dateOfBirth": "1988-06-30",
+      "department": "Support",
+      "isActive": false,
+      "photoPath": "/assets/images/laura.jpg",
+      "age": 37,
+      "today": "2025-10-22"
+    }
+  ]
+}
