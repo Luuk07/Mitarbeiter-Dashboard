@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ShareDataService } from '../create-comp/share-data-service';
-import { ShareFilterService } from '../home/filter-comp/share-filter-service';
+import { ShareFilterService } from '../filter-comp/share-filter-service';
 
 // Header with routing links
 @Component({

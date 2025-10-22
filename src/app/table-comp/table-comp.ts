@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { I_ifEmployee } from '../models/interfaces/employee.model';
 import { CommonModule } from '@angular/common';
+import { ShareFilterService } from '../filter-comp/share-filter-service';
+
 
 
 
@@ -19,10 +21,15 @@ import { CommonModule } from '@angular/common';
   styleUrl: './table-comp.css'
 })
 export class TableComp {
+
+  readonly filterService = inject(ShareFilterService);
+  employees: I_ifEmployee[] = [];
+
   // Injecting the ShareDataService to access employee data
   readonly emp = inject(ShareDataService)
   // Data source for the table
   dataSource = new MatTableDataSource(this.emp.allEmployees);
+  
   // Columns to be displayed
   displayedColumns: string[] = ['gender', 'name', 'birthday', 'email', 'phoneNumber', 'department', 'isActive', 'age', 'today', 'delete'];
    
@@ -30,7 +37,8 @@ export class TableComp {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    private _route: Router
+    private _route: Router,
+    public _shareDataService:ShareDataService
   ) {}  
 
   // Datasource get the knowledge of sorting after view initialization

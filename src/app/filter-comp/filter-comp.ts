@@ -1,13 +1,13 @@
 import { Component, ChangeDetectionStrategy, inject} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ShareDataService } from '../../create-comp/share-data-service';
+import { ShareDataService } from '../create-comp/share-data-service';
 import { ShareFilterService } from './share-filter-service';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {FormsModule} from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
-import { I_ifEmployee } from '../../models/interfaces/employee.model';
+import { I_ifEmployee } from '../models/interfaces/employee.model';
 import { MatInputModule } from '@angular/material/input'; 
 // Filter Component for Employees
 @Component({

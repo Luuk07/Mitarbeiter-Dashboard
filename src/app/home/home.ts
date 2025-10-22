@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { EmployeesListComp } from "./employees-list-comp/employees-list-comp";
-import { FilterComp } from "./filter-comp/filter-comp";
+
 
 @Component({
   selector: 'app-home',
-  imports: [EmployeesListComp, FilterComp],
+  imports: [EmployeesListComp],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

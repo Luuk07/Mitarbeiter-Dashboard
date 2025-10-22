@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { EmployeeComp } from "../employee-comp/employee-comp";
 import { ShareDataService } from '../../create-comp/share-data-service';
 import { I_ifEmployee } from '../../models/interfaces/employee.model';
-import { ShareFilterService } from '../filter-comp/share-filter-service';
+import { ShareFilterService } from '../../filter-comp/share-filter-service';
 
 // List of all Employees 
 @Component({
@@ -23,7 +23,6 @@ export class EmployeesListComp implements OnInit{
 
   //Take Data from service
   addFromService() {
-    console.log('rein')
     const newEmployees = this._shareDataService.allEmployees;
     if (newEmployees) {
       this.employees = newEmployees;

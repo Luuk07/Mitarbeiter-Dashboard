@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { ShareDataService } from '../../create-comp/share-data-service';
+import { ShareDataService } from '../create-comp/share-data-service';
 
 
 //Service to share filter values between components
