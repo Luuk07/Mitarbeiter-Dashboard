@@ -41,6 +41,13 @@ export class TableComp {
     public _shareDataService:ShareDataService
   ) {}  
 
+  get onDataSource(){
+    console.log('dataSource', this.dataSource);
+    return this.dataSource = new MatTableDataSource(this.filterService.filteredEmployees);
+  }
+
+
+
   // Datasource get the knowledge of sorting after view initialization
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
