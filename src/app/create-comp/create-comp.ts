@@ -48,79 +48,62 @@ export class CreateComp {
 
   //Employee attributes
   today: Date = new Date();
-  id = Date.now();
+  id = null;
   birthday: Date = new Date();
   age = 0;
   name= '';
   email? = '';
   gender = '';
-  phonenumber? = 0;
+  phoneNumber? = 0;
   department = '';
   isActive = false;
 
   //On Confirm Button
-  onConfirm(){
- 
+  onConfirm() {
     // Prüft, ob this.id null oder undefined ist -> dann wird eine neue ID mit Date.now() erstellt
     // Ansonsten wird die vorhandene this.id genommen
-    const id = this.id ?? Date.now();
-
-    //Take over the data from input fields    
-    const employeeData: I_ifEmployee = {
-      id: id,
-      name: this.name,
-      gender: this.gender,
-      email: this.email,
-      phoneNumber: this.phonenumber,
-      dateOfBirth: this.birthday,
-      department: this.department,
-      isActive: this.isActive,
-      today: this.today,
-      age: this.age,
-      photoPath: ''
-    };
-    //calculate age
-    this.birthday = new Date(employeeData.dateOfBirth);
-    this.today = new Date(employeeData.today);
-    employeeData.age = this.today.getFullYear() - this.birthday.getFullYear();
+    
     //Save all Errors
     const errors = [];
 
     //Error handler
   
-    if(!employeeData.name || employeeData.name.trim() === '')
+    if(!this.name || this.name.trim() === '')
     {
       errors.push('Bitte gib einen Namen ein');
     }
-    if(!employeeData.email || employeeData.email.trim() === '')
+    if(!this.email || this.email.trim() === '')
     {
      errors.push('Bitte gib eine Email ein');
     }
-    if(!employeeData.email.includes('@'))
+    if(!this.email.includes('@'))
     {
       errors.push('Ungültige Email: Kein @ enthalten')
     }
-    if(employeeData.department === '')
+    if(this.department === '')
     {
       errors.push('Bitte gib eine Abteilung an');
     }
-    if(employeeData.gender === '')
+    if(this.gender === '')
     {
       errors.push('Bitte gib ein Geschlecht an');
     }
-    if(employeeData.phoneNumber === null)
+    if(this.phoneNumber === null)
     {
       errors.push('Bitte gib deine Telefonnumer an');
     }
+
+    console.log('this.birthday',this.birthday);
+    
     if((this.birthday.getDate() > this.today.getDate())){
       errors.push('Dein Geburtstag kann nicht in der Zukunft liegen!');
     }
    
 
-    if(!employeeData.name || !employeeData.name.trim() || 
-      !employeeData.email || !employeeData.email.trim() ||
-      !employeeData.department || !employeeData.gender || employeeData.phoneNumber === null
-      || !employeeData.email.includes('@') || (this.birthday.getDate() > this.today.getDate()))
+    if(!this.name || !this.name.trim() || 
+      !this.email || !this.email.trim() ||
+      !this.department || !this.gender || this.phoneNumber === null
+      || !this.email.includes('@') || (this.birthday.getDate() > this.today.getDate()))
       {
         this.dialog.open(RequiredPopup).afterClosed().subscribe(() => {
           return;
@@ -138,31 +121,88 @@ export class CreateComp {
     }
 
     //check if current employee should get edited or new created
-    const index = this._shareDataService.allEmployees.findIndex(emp => emp.id === employeeData.id);
-    if (index !== -1) {
-      this._shareDataService.allEmployees[index] = employeeData;
-    } 
-    else{
-      this._shareDataService.allEmployees.push(employeeData);
-    }
+    // const index = this._shareDataService.allEmployees.findIndex(emp => emp.id === employeeData.id);
+    // if (index !== -1) {
+    //   this._shareDataService.allEmployees[index] = employeeData;
+    // } 
+    // else{
+    //   this._shareDataService.allEmployees.push(employeeData);
+    // }
 
-    employeeData.name = employeeData.name.toLowerCase();
+    this.name = this.name.toLowerCase();
+
+    console.log('this.id',this.id);
+    
+
+    if (this.id !== null) {
+      this.updateExistingEmployee();
+    } else {
+      this.addNewEmployee();
+    }
     // Speichere das aktuelle Array aller Mitarbeiter als JSON-String im localStorage unter dem Schlüssel 'employees',
     // damit die Daten auch nach einem Seitenneuladen im Browser erhalten bleiben.
     // Der Schlüssel ist der Name worunter die Daten im local Storage gespeichert werden.
 
     //localStorage.setItem('employees', JSON.stringify(this._shareDataService.allEmployees));
- 
-    this._apiService.addNewEmployee(employeeData).subscribe((newEmployee: I_ifEmployee) => {
-      console.log('Neuer Mitarbeiter hinzugefügt:', newEmployee);
-    });
+    // if(!this.id) {
+    //   console.log('in Post');
+    //   this._apiService.addNewEmployee(employeeData).subscribe((newEmployee: I_ifEmployee) => {
+    //     console.log('Neuer Mitarbeiter hinzugefügt:', newEmployee);
+    //   });
+    // } else {
+    //   console.log('this.id', this.id);
+    //   console.log('in Put');
+    //   this._apiService.updateEmployee(employeeData).subscribe((updatedEmployee: I_ifEmployee) => {
+    //     console.log('Mitarbeiter aktualisiert:', updatedEmployee);
+    //   });
+    // }
 
     // save name in lowercase for filtering
-    employeeData.name = this.name.toLowerCase();
+    this.name = this.name.toLowerCase();
 
     //route to home site
     this._route.navigate(['/home']);
 
+  }
+
+  getUpdateOrAddEmployee() {
+    const id = this.id ? this.id : Date.now();
+
+    //Take over the data from input fields    
+    const employeeData: I_ifEmployee = {
+      id: id,
+      name: this.name,
+      gender: this.gender,
+      email: this.email,
+      phoneNumber: this.phoneNumber,
+      dateOfBirth: this.birthday,
+      department: this.department,
+      isActive: this.isActive,
+      today: this.today,
+      age: this.age,
+      photoPath: ''
+    };
+    //calculate age
+    this.birthday = new Date(employeeData.dateOfBirth);
+    this.today = new Date(employeeData.today);
+    employeeData.age = this.today.getFullYear() - this.birthday.getFullYear();
+
+    return employeeData;
+  }
+
+
+  addNewEmployee() {
+    let employeeData: I_ifEmployee = this.getUpdateOrAddEmployee();
+
+    this._apiService.addNewEmployee(employeeData).subscribe((newEmployee: I_ifEmployee) => { 
+      console.log('Neuer Mitarbeiter hinzugefügt:', newEmployee);
+    });
+  }
+
+  updateExistingEmployee() {
+    this._apiService.updateEmployee(this.getUpdateOrAddEmployee()).subscribe((updatedEmployee: I_ifEmployee) => {
+      console.log('Mitarbeiter aktualisiert:', updatedEmployee);
+    });
   }
 
   
@@ -174,13 +214,23 @@ export class CreateComp {
     else{
       this.route.queryParams.subscribe(params => {
         
-        if(params['employeeID']) {
-          const currentEmployeeID = Number(params['employeeID']);
+        if (params['employeeID']) {
+            const currentEmployeeID = Number(params['employeeID']);
 
-          let selectedEmployee = this.getEmployeeByID(currentEmployeeID);
-          console.log('selectedEmployee',selectedEmployee);
+            this._apiService.getEmployeeById(currentEmployeeID).subscribe((_employee: I_ifEmployee) => {
+              if (_employee) {
+                // let selectedEmployee = this.getEmployeeByID(currentEmployeeID);
+                // console.log('selectedEmployee',selectedEmployee);
+    
+                // if (selectedEmployee) 
+                  this.setEmployeeAttributes(_employee);
 
-          if (selectedEmployee) this.setEmployeeAttributes(selectedEmployee);
+              }
+              
+            })
+              // return this._shareDataService.allEmployees?.find((clEmployee: I_ifEmployee) => clEmployee.id === _employeeID);
+
+
           }
         });
       
@@ -195,17 +245,23 @@ export class CreateComp {
       this.name= _employee.name;
       this.email = _employee.email;
       this.gender = _employee.gender;
-      this.phonenumber = _employee.phoneNumber;
+      this.phoneNumber = _employee.phoneNumber;
       this.department = _employee.department;
       this.isActive = _employee.isActive;
-      this.birthday = _employee.dateOfBirth;
+      this.birthday = new Date(_employee.dateOfBirth);
     }
+
+    console.log('employee to edit', _employee);
+    
   }
 
   // Get emlpoyee by ID
-  getEmployeeByID(_employeeID: number) {
-    return this._shareDataService.allEmployees?.find((clEmployee: I_ifEmployee) => clEmployee.id === _employeeID);
-  }
+  // getEmployeeByID(_employeeID: number) {
+  //   this._apiService.getEmployeeById(_employeeID).subscribe((_employee: I_ifEmployee) => {
+  //     return _employee;
+  //   })
+  //   // return this._shareDataService.allEmployees?.find((clEmployee: I_ifEmployee) => clEmployee.id === _employeeID);
+  // }
   // On Break Up Button -> default data
   onBreakUp()
   {
@@ -214,7 +270,7 @@ export class CreateComp {
     this.name= '';
     this.email = '';
     this.gender = '';
-    this.phonenumber = 0;
+    this.phoneNumber = 0;
     this.department = '';
     this.isActive = false;
     this._route.navigate(['/home']);

@@ -1,40 +1,56 @@
 {
   "employees": [
     {
-      "id": "3",
-      "name": "Julia Becker",
-      "gender": "weiblich",
-      "dateOfBirth": "1995-02-10",
-      "department": "Entwicklung",
-      "isActive": false,
-      "age": 30,
-      "today": "2025-10-22"
-    },
-    {
-      "id": "4",
-      "name": "Michael Weber",
-      "gender": "männlich",
-      "email": "m.weber@example.com",
-      "phoneNumber": 491761234567,
-      "dateOfBirth": "1978-12-01",
-      "department": "HR",
+      "id": "1761212235823",
+      "name": "luuk",
+      "gender": "Weiblich",
+      "email": "luuk.pehlgrim@gmail.com",
+      "phoneNumber": 543454,
+      "dateOfBirth": "2025-10-05T22:00:00.000Z",
+      "department": "It",
       "isActive": true,
-      "photoPath": "/assets/images/michael.jpg",
-      "age": 46,
-      "today": "2025-10-22"
+      "today": "2025-10-23T09:37:07.278Z",
+      "age": 0,
+      "photoPath": ""
     },
     {
-      "id": "5",
-      "name": "Laura Klein",
-      "gender": "weiblich",
-      "email": "laura.klein@example.com",
-      "phoneNumber": 491601234567,
-      "dateOfBirth": "1988-06-30",
-      "department": "Support",
+      "id": "1761212612009",
+      "name": "mann",
+      "gender": "Weiblich",
+      "email": "reher@eeg-energie.de",
+      "phoneNumber": 543454,
+      "dateOfBirth": "2025-10-12T22:00:00.000Z",
+      "department": "It",
+      "isActive": true,
+      "today": "2025-10-23T09:43:23.187Z",
+      "age": 0,
+      "photoPath": ""
+    },
+    {
+      "id": "1761212682257",
+      "name": "luuk",
+      "gender": "Männlich",
+      "email": "luuk.pehlgrim@gmail.com",
+      "phoneNumber": 234234,
+      "dateOfBirth": "2025-10-23T09:44:35.285Z",
+      "department": "It",
+      "isActive": true,
+      "today": "2025-10-23T09:44:35.285Z",
+      "age": 0,
+      "photoPath": ""
+    },
+    {
+      "id": "1761212732265",
+      "name": "mann",
+      "gender": "Männlich",
+      "email": "reher@eeg-energie.de",
+      "phoneNumber": 234234,
+      "dateOfBirth": "2025-10-23T09:45:25.154Z",
+      "department": "Kfm",
       "isActive": false,
-      "photoPath": "/assets/images/laura.jpg",
-      "age": 37,
-      "today": "2025-10-22"
+      "today": "2025-10-23T09:45:25.154Z",
+      "age": 0,
+      "photoPath": ""
     }
   ]
 }

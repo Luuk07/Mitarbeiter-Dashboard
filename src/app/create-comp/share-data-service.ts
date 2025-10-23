@@ -12,8 +12,9 @@ import { ApiService } from '../services/api-service';
 })
 export class ShareDataService  {
 
-  public allEmployees?: I_ifEmployee[] = [
-  ];
+  allEmployees: I_ifEmployee[] = []; 
+  
+  
   today = new Date();
   eighteenYearsAgo = new Date(this.today.getFullYear() - 18, this.today.getMonth(), this.today.getDate());
   employeeAktiveCount: number = 0; 

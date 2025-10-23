@@ -9,6 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { I_ifEmployee } from '../models/interfaces/employee.model';
 import { MatInputModule } from '@angular/material/input'; 
+import { ApiService } from '../services/api-service';
 // Filter Component for Employees
 @Component({
   selector: 'app-filter-comp',
@@ -23,26 +24,30 @@ import { MatInputModule } from '@angular/material/input';
   styleUrl: './filter-comp.css'
 })
 export class FilterComp {
+
+  employees: I_ifEmployee[] = [];
   //Inject Services
   readonly service = inject(ShareDataService)
   readonly filterService = inject(ShareFilterService)
   //Data source for table
-  dataSource = new MatTableDataSource(this.service.allEmployees);
+  dataSource = new MatTableDataSource();
   //Filter values
   selectedGender = 'alle';
   selectedDepartment = 'alle';
   isAktiv: boolean;
   name = '';
-  
   //Define filter function
   //If filter is empty, show all
   //Otherwise filter according to selected values
-  constructor() {
-    this.dataSource = new MatTableDataSource(this.service.allEmployees);
+  constructor(private _apiService : ApiService) {
+    this._apiService.getAllEmployees().subscribe((_employees) => {
+      this.dataSource = new MatTableDataSource(_employees)
+    });
     this.dataSource.filterPredicate = (data: I_ifEmployee, filter: string) => {
     if (!filter) return true; 
     return true;
   }
+  
 }
  //Apply filters
   applyFilterGender(filterValue: string) 
@@ -69,7 +74,6 @@ export class FilterComp {
   onNameInputChange(value: string) {
     this.filterService.setFilterName(value);
     console.log('Name input changed:', value);
-  
   }
 
 }

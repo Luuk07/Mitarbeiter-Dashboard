@@ -32,5 +32,7 @@ export class ApiService {
    deletEmployeeById(employeeId: number): Observable<I_ifEmployee> {
     return this._http.delete<I_ifEmployee>(`${this.apiUrl}/employees/${employeeId}`);
   }
+
+
   
 }

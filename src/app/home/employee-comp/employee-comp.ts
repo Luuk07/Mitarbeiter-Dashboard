@@ -47,10 +47,7 @@ export class EmployeeComp implements OnInit {
       if (result) {
         console.log('employeeId', employeeId);
         // 1. Remove from All Emloyees List
-        this._shareDataService.allEmployees = this._shareDataService.allEmployees?.filter(emp => emp.id !== employeeId);
-    
-        // 2. Remove Dom Element
-        element.remove();
+        // this._shareDataService.allEmployees = this._shareDataService.allEmployees?.filter(emp => emp.id !== employeeId);
     
 
         // Speichere das aktuelle Array aller Mitarbeiter als JSON-String im localStorage unter dem Schlüssel 'employees',
@@ -58,8 +55,12 @@ export class EmployeeComp implements OnInit {
         // Der Schlüssel ist der Name worunter die Daten im local Storage gespeichert werden.
 
         //localStorage.setItem('employees', JSON.stringify(this._shareDataService.allEmployees));
-         this._apiService.deletEmployeeById(employeeId).subscribe((emplpoyee: I_ifEmployee) => {
-              console.log(' Mitarbeiter deleted:', emplpoyee);
+        this._apiService.deletEmployeeById(employeeId).subscribe((emplpoyee: I_ifEmployee) => {
+          console.log(' Mitarbeiter deleted:', emplpoyee);
+                
+          // 2. Remove Dom Element
+          element.remove();
+
         });
       }
     });
@@ -68,7 +69,6 @@ export class EmployeeComp implements OnInit {
   // Navigate to Create Site with employee Data
   navigate2Route() {
     console.log('this.employee?.id',this.employee?.id);
-    
     this._route.navigate(['/create'], {queryParams: {employeeID: this.employee?.id?.toString()}});
   }
 
