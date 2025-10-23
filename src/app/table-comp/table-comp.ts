@@ -26,7 +26,6 @@ export class TableComp implements OnInit {
 
   readonly filterService = inject(ShareFilterService);
   readonly dialog = inject(MatDialog);
-  employees: I_ifEmployee[] = [];
 
   // Injecting the ShareDataService to access employee data
  
@@ -42,21 +41,31 @@ export class TableComp implements OnInit {
   constructor(
     private _route: Router,
     public _shareDataService:ShareDataService,
-    private _apiService:ApiService
-  ) {}  
+    private _apiService: ApiService
+  ) {
 
-  // get onDataSource() {
-  //   this.dataSource.sort = this.sort;
-  //   return new MatTableDataSource(this.filterService.filteredEmployees);
-  // }
-  
- ngOnInit(): void {
-   
+
     this.dataSource.data = this.filterService.filteredEmployees;
+
+    console.log('this.filterService.filteredEmployees',this.filterService.filteredEmployees);
+    
+  }
+
+  get onDataSource() {
+    this.dataSource.data = this.filterService.filteredEmployees;
+    return  this.dataSource;
+  }
+  
+  ngOnInit(): void {    
+    this.setUpTable();
   }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
+  }
+
+  setUpTable() {
+     
   }
 
   onEdit(employee: I_ifEmployee): void {
@@ -70,14 +79,9 @@ export class TableComp implements OnInit {
        
        //If on 'Ja' 
        if (result) {
-        
-         this._apiService.deletEmployeeById(employeeId).subscribe((emplpoyee: I_ifEmployee) => {
-           console.log(' Mitarbeiter deleted:', emplpoyee);
-                 
-           // 2. Remove Dom Element
-           element.remove();
- 
-         });
+         this._apiService.deletEmployeeById(employeeId);
+
+        //  this.setUpTable();
        }
      });
    }

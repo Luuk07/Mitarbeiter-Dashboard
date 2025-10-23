@@ -197,15 +197,11 @@ export class CreateComp {
   addNewEmployee() {
     let employeeData: I_ifEmployee = this.getUpdateOrAddEmployee();
 
-    this._apiService.addNewEmployee(employeeData).subscribe((newEmployee: I_ifEmployee) => { 
-      console.log('Neuer Mitarbeiter hinzugefügt:', newEmployee);
-    });
+    this._apiService.addNewEmployee(employeeData);
   }
 
   updateExistingEmployee() {
-    this._apiService.updateEmployee(this.getUpdateOrAddEmployee()).subscribe((updatedEmployee: I_ifEmployee) => {
-      console.log('Mitarbeiter aktualisiert:', updatedEmployee);
-    });
+    this._apiService.updateEmployee(this.getUpdateOrAddEmployee());
   }
 
   

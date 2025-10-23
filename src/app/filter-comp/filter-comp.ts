@@ -40,7 +40,7 @@ export class FilterComp {
   //If filter is empty, show all
   //Otherwise filter according to selected values
   constructor(private _apiService : ApiService) {
-    this._apiService.getAllEmployees().subscribe((_employees) => {
+    this._apiService.allEmployees$.subscribe((_employees) => {
       this.dataSource = new MatTableDataSource(_employees)
     });
     this.dataSource.filterPredicate = (data: I_ifEmployee, filter: string) => {

@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { ChangeDetectorRef, Injectable, inject } from '@angular/core';
 import { ShareDataService } from '../create-comp/share-data-service';
 import { I_ifEmployee } from '../models/interfaces/employee.model';
 import { ApiService } from '../services/api-service';
@@ -26,7 +26,7 @@ export class ShareFilterService {
   
 
   getAllEmployees() {
-    this._apiService.getAllEmployees().subscribe((_employees: I_ifEmployee[]) => {
+    this._apiService.allEmployees$.subscribe((_employees: I_ifEmployee[]) => {
       this.allEmployees = _employees;
     });
   }
@@ -38,7 +38,7 @@ export class ShareFilterService {
   filterValueName: string = '';
    
   // Setter methods to update filter values
-  setFilterGendner(value: string ) {
+  setFilterGendner(value: string ) {    
     this.filterValueGender = value;
     
   }
@@ -58,12 +58,13 @@ export class ShareFilterService {
   // Getter to retrieve filtered employees based on current filter values
   // Getter is to update automatically when filter values change
   get filteredEmployees() {
-    console.log('All Employees:', this.allEmployees);
-    console.log('In filtered Employes:', this.allEmployees.filter(emp =>
-      (this.filterValueGender === 'alle' || emp.gender === this.filterValueGender) &&
-      (this.filterValueDepartment === 'alle' || emp.department === this.filterValueDepartment) &&
-      (this.filterValueIsActive === undefined || emp.isActive === this.filterValueIsActive)
-    ));
+    // console.log('All Employees:', this.allEmployees);
+    // console.log('In filtered Employes:', this.allEmployees.filter(emp =>
+    //   (this.filterValueGender === 'alle' || emp.gender === this.filterValueGender) &&
+    //   (this.filterValueDepartment === 'alle' || emp.department === this.filterValueDepartment) &&
+    //   (this.filterValueIsActive === undefined || emp.isActive === this.filterValueIsActive)
+    // ));
+
     return this.allEmployees.filter(emp =>
       (this.filterValueGender === 'alle' || emp.gender === this.filterValueGender) &&
       (this.filterValueDepartment === 'alle' || emp.department === this.filterValueDepartment) &&

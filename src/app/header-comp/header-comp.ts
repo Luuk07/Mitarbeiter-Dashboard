@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
@@ -45,17 +45,15 @@ export class HeaderComp implements OnInit{
   }
 
   getEmployee() {
-    this._apiService.getAllEmployees().subscribe((_employees) => {
-      console.log('Employees in header', _employees);
+    this._apiService.allEmployees$.subscribe((_employees) => {
+      // console.log('Employees in header', _employees);
       return this.employees = _employees;
     });
   }
   
-
   ngOnInit() {
     this.router.events.subscribe(() => {
       this.getEmployee();
     });
-   
   }
 }

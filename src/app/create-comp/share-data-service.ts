@@ -29,45 +29,15 @@ export class ShareDataService  {
     private _apiService: ApiService
   ){
     this.getAllEmployeesFromJsonServer();
-    if(typeof window !== 'undefined')
-    {
-      //Take data from local storage
-
-      
-      // const employees = localStorage.getItem('employees');
-
-      // if(employees)
-      // { 
-         
-      //    try{
-      //       (JSON.parse(employees) as I_ifEmployee[]).forEach(emp => {
-      //         this.allEmployees.push(emp);
-      //       });
-      //       // this.allEmployees.push();
-      //     }
-      //     catch (error) {
-      //     console.error('Fehler beim Parsen der Employee-Daten aus localStorage:', error);
-      //     this.allEmployees = [];
-      //   }
-
-      // }
-      // else {
-      //   // Falls serverseitig, initialisiere leer oder mit Defaultwerten
-      //   this.allEmployees = [];
-      // }
-    }
-    else{
-      this.allEmployees = [];
-    }
- 
    }
 
 
   getAllEmployeesFromJsonServer() { 
-    this._apiService.getAllEmployees().subscribe((_allEmployees: I_ifEmployee[]) => {
-      _allEmployees.forEach(emp => {
-        this.allEmployees.push(emp);
-      });
+    this._apiService.allEmployees$.subscribe((_allEmployees: I_ifEmployee[]) => {
+      this.allEmployees = _allEmployees
+      // _allEmployees.forEach(emp => {
+      //   this.allEmployees.push(emp);
+      // });
       
     });
   }

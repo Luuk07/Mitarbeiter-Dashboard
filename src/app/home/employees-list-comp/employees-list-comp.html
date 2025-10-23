@@ -6,7 +6,7 @@
         (filterService.filterValueIsActive === employee.isActive || filterService.filterValueIsActive === undefined))){
         @if(filterService.filterValueName === '' || employee.name.includes(filterService.filterValueName.toLowerCase())){
           <ul>
-            <app-employee-comp [employee]="employee"></app-employee-comp>
+            <app-employee-comp [employee]="employee" (onEmployeeDeleted)="onEmployeeDeleted($event)"></app-employee-comp>
           </ul>
         }
       }

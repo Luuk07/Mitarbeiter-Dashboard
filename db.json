@@ -1,17 +1,3 @@
 {
-  "employees": [
-    {
-      "id": "1761217656679",
-      "name": "blablabla",
-      "gender": "Männlich",
-      "email": "pehlgrim@eeg-energie.de",
-      "phoneNumber": 234234,
-      "dateOfBirth": "2025-10-12T22:00:00.000Z",
-      "department": "It",
-      "isActive": true,
-      "today": "2025-10-23T11:11:55.536Z",
-      "age": 0,
-      "photoPath": ""
-    }
-  ]
+  "employees": []
 }
