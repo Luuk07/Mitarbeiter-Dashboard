@@ -21,6 +21,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { ApiService } from '../services/api-service';
+import { ShareFilterService } from '../filter-comp/share-filter-service';
 
 //Create the employee
 @Component({
@@ -34,6 +35,8 @@ import { ApiService } from '../services/api-service';
 export class CreateComp {
 
   readonly dialog = inject(MatDialog);
+  readonly filterService = inject(ShareFilterService);
+
 
   constructor(
     private _shareDataService: ShareDataService, 
@@ -159,7 +162,7 @@ export class CreateComp {
 
     // save name in lowercase for filtering
     this.name = this.name.toLowerCase();
-
+  
     //route to home site
     this._route.navigate(['/home']);
 
@@ -230,7 +233,6 @@ export class CreateComp {
             })
               // return this._shareDataService.allEmployees?.find((clEmployee: I_ifEmployee) => clEmployee.id === _employeeID);
 
-
           }
         });
       
@@ -275,5 +277,8 @@ export class CreateComp {
     this.isActive = false;
     this._route.navigate(['/home']);
   }
+
+  
+  
 
 }

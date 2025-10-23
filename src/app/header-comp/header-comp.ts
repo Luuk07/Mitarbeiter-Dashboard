@@ -21,7 +21,7 @@ export class HeaderComp implements OnInit{
   readonly router = inject(Router);
 
   employees: I_ifEmployee[] = [];
-  filteredEmployees: I_ifEmployee[] = [];
+  filteredEmployees: I_ifEmployee[] = this.filter.filteredEmployees;
   constructor(private _apiService:ApiService) {
 
   }
@@ -51,13 +51,6 @@ export class HeaderComp implements OnInit{
     });
   }
   
-  // getfilteredEmployes() {
-  //   this._apiService.getAllEmployees().subscribe((_employees) => {
-  //     console.log('FilteredEmployees in header', _employees);
-  //     _employees= this.filter.filteredEmployees;
-  //     return this.filteredEmployees = _employees;
-  //   });
-  // }
 
   ngOnInit() {
     this.router.events.subscribe(() => {

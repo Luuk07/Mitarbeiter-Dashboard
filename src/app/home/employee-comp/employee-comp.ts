@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DelConfirmationPopup } from '../del-confirmation-popup/del-confirmation-popup';
 import {MatTableModule} from '@angular/material/table';
 import { ApiService } from '../../services/api-service';
+import { ShareFilterService } from '../../filter-comp/share-filter-service';
 
 
 //Employee Component
@@ -23,7 +24,7 @@ export class EmployeeComp implements OnInit {
   //MatDialog = Is the the service for modale dialogs like the Confirmation Dialog
   readonly emp = inject(ShareDataService)
   readonly dialog = inject(MatDialog)
- 
+  readonly router = inject(Router)
   @Input() employee?: I_ifEmployee;
   
 
@@ -60,8 +61,10 @@ export class EmployeeComp implements OnInit {
                 
           // 2. Remove Dom Element
           element.remove();
-
         });
+      
+
+        
       }
     });
   }
