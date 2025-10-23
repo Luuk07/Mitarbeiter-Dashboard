@@ -18,7 +18,7 @@ import { ApiService } from '../services/api-service';
 
 @Component({
   selector: 'app-table-comp',
-  imports: [MatTableModule, DatePipe, MatSortModule, MatSort, CommonModule],
+  imports: [MatTableModule, DatePipe, MatSortModule, CommonModule],
   templateUrl: './table-comp.html',
   styleUrl: './table-comp.css'
 })
@@ -31,7 +31,7 @@ export class TableComp implements OnInit {
   // Injecting the ShareDataService to access employee data
  
   // Data source for the table
-  dataSource = new MatTableDataSource();
+  dataSource = new MatTableDataSource<I_ifEmployee>([]);
   
   // Columns to be displayed
   displayedColumns: string[] = ['gender', 'name', 'birthday', 'email', 'phoneNumber', 'department', 'isActive', 'age', 'today', 'edit', 'delete'];
@@ -45,14 +45,19 @@ export class TableComp implements OnInit {
     private _apiService:ApiService
   ) {}  
 
-  ngOnInit(): void {
-    this.onDataSource;
-  }
-  get onDataSource() {
-    this.dataSource.sort = this.sort;
-    return new MatTableDataSource(this.filterService.filteredEmployees);
+  // get onDataSource() {
+  //   this.dataSource.sort = this.sort;
+  //   return new MatTableDataSource(this.filterService.filteredEmployees);
+  // }
+  
+ ngOnInit(): void {
+   
+    this.dataSource.data = this.filterService.filteredEmployees;
   }
 
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+  }
 
   onEdit(employee: I_ifEmployee): void {
     this._route.navigate(['/create'], {queryParams: {employeeID: employee?.id?.toString()}});

@@ -1,28 +1,15 @@
 {
   "employees": [
     {
-      "id": 1761217630240,
-      "name": "luuk",
-      "gender": "Weiblich",
-      "email": "luuk.pehlgrim@gmail.com",
-      "phoneNumber": 978987,
-      "dateOfBirth": "2016-01-10T23:00:00.000Z",
-      "department": "It",
-      "isActive": false,
-      "today": "2025-10-23T11:06:59.439Z",
-      "age": 9,
-      "photoPath": ""
-    },
-    {
-      "id": 1761217656679,
+      "id": "1761217656679",
       "name": "blablabla",
       "gender": "Männlich",
       "email": "pehlgrim@eeg-energie.de",
       "phoneNumber": 234234,
       "dateOfBirth": "2025-10-12T22:00:00.000Z",
       "department": "It",
-      "isActive": false,
-      "today": "2025-10-23T11:07:28.160Z",
+      "isActive": true,
+      "today": "2025-10-23T11:11:55.536Z",
       "age": 0,
       "photoPath": ""
     }
