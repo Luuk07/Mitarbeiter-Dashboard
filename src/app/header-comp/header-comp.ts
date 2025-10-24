@@ -20,6 +20,7 @@ export class HeaderComp implements OnInit{
   readonly filter = inject(ShareFilterService)
   readonly router = inject(Router);
 
+
   employees: I_ifEmployee[] = [];
   filteredEmployees: I_ifEmployee[] = this.filter.filteredEmployees;
   constructor(private _apiService:ApiService) {
@@ -37,10 +38,12 @@ export class HeaderComp implements OnInit{
   }
   isOnTable(): boolean
   {
+    
     return this.router.url.startsWith('/table')
   }
   isOnHome(): boolean
   {
+  
     return this.router.url.startsWith('/home') || this.router.url === '/'
   }
 

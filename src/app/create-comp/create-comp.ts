@@ -141,7 +141,7 @@ export class CreateComp {
 
     //Take over the data from input fields    
     const employeeData: I_ifEmployee = {
-      id: id,
+      id: id.toString(),
       name: this.name,
       gender: this.gender,
       email: this.email,
@@ -184,7 +184,7 @@ export class CreateComp {
         if (params['employeeID']) {
             const currentEmployeeID = Number(params['employeeID']);
 
-            this._apiService.getEmployeeById(currentEmployeeID).subscribe((_employee: I_ifEmployee) => {
+            this._apiService.getEmployeeById(currentEmployeeID.toString()).subscribe((_employee: I_ifEmployee) => {
               if (_employee) {
                   this.setEmployeeAttributes(_employee);
 

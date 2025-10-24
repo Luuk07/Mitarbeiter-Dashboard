@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'http://localhost:3001';
 
 
   allEmployeesSubject = new BehaviorSubject<I_ifEmployee[]>([]);
@@ -37,11 +37,13 @@ export class ApiService {
     );
   }
 
-  getEmployeeById(_employeeID: number): Observable<I_ifEmployee> {
+  getEmployeeById(_employeeID: string): Observable<I_ifEmployee> {
     return this._http.get<I_ifEmployee>(`${this.apiUrl}/employees/${_employeeID}`);
   }
 
 addNewEmployee(_employee: I_ifEmployee) {
+  console.log('_employee',_employee);
+  
   this._http.post<I_ifEmployee>(`${this.apiUrl}/employees`, _employee).subscribe({
     next: () => {
       console.log(' Neuer Employee hinzugefügt');
@@ -66,7 +68,7 @@ updateEmployee(employee: I_ifEmployee) {
   });
 }
 
-deleteEmployeeById(employeeId: number) {
+deleteEmployeeById(employeeId: string) {
   this._http.delete(`${this.apiUrl}/employees/${employeeId}`).subscribe({
     next: () => {
       console.log(`Employee ${employeeId} gelöscht`);

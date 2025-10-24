@@ -6,7 +6,7 @@
       
     <div class="attributes">
       <p>Geschlecht: {{employee?.gender}}</p>
-      <p>Date of Birth: {{employee?.dateOfBirth | date:'dd.MM.yyyy'}} </p>
+      <p>Geburtstag: {{employee?.dateOfBirth | date:'dd.MM.yyyy'}} </p>
       <p>Email: {{employee?.email}} </p>
       <p>Telefonnummer: {{employee?.phoneNumber}} </p>
       <p>Abteilung: {{employee?.department}} </p>
@@ -15,7 +15,7 @@
       <p [ngClass]="{'isActive': employee.isActive, 'isNotActive':!employee.isActive}">Ist Aktiv: {{employee?.isActive  ? 'Ja' : 'Nein'}} </p>
     </div>
 
-    <button class="onDelete" (click)="onDelete(employee?.id ??  0, box)">Delete</button>
+    <button class="onDelete" (click)="onDelete(employee?.id, box)">Delete</button>
 
     <button class="router" (click)="navigate2Route()">edit</button>
     

@@ -11,16 +11,20 @@ import { ShareFilterService } from '../filter-comp/share-filter-service';
 import { MatDialog } from '@angular/material/dialog';
 import { DelConfirmationPopup } from '../home/del-confirmation-popup/del-confirmation-popup';
 import { ApiService } from '../services/api-service';
+import { LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
 
 
 
-
+registerLocaleData(localeDe);
 
 @Component({
   selector: 'app-table-comp',
   imports: [MatTableModule, DatePipe, MatSortModule, CommonModule],
   templateUrl: './table-comp.html',
-  styleUrl: './table-comp.css'
+  styleUrl: './table-comp.css',
+  providers: [{ provide: LOCALE_ID, useValue: 'de-DE' }]
 })
 export class TableComp implements OnInit {
 
@@ -81,9 +85,7 @@ export class TableComp implements OnInit {
        
        //If on 'Ja' 
        if (result) {
-         this._apiService.deleteEmployeeById(employeeId);
-
-        //  this.setUpTable();
+         this._apiService.deleteEmployeeById(employeeId.toString());
        }
      });
    }

@@ -13,59 +13,59 @@ import { ApiService } from '../services/api-service';
 export class ShareDataService  {
   lastRoute = '';
 
-//   allEmployees: I_ifEmployee[] = []; 
+  allEmployees: I_ifEmployee[] = []; 
   
   
-//   today = new Date();
-//   eighteenYearsAgo = new Date(this.today.getFullYear() - 18, this.today.getMonth(), this.today.getDate());
-//   employeeAktiveCount: number = 0; 
-//   employeeInAktiveCount: number = 0; 
-//   employeeFemaleCount: number = 0;
-//   employeeMaleCount: number = 0;
-//   employeeDiverseCount: number = 0;
-//   employeeUnderAgeCount: number = 0;
-//   emoloyeeOfAgeCount: number = 0;
+  today = new Date();
+  eighteenYearsAgo = new Date(this.today.getFullYear() - 18, this.today.getMonth(), this.today.getDate());
+  employeeAktiveCount: number = 0; 
+  employeeInAktiveCount: number = 0; 
+  employeeFemaleCount: number = 0;
+  employeeMaleCount: number = 0;
+  employeeDiverseCount: number = 0;
+  employeeUnderAgeCount: number = 0;
+  emoloyeeOfAgeCount: number = 0;
   
-//   constructor(
-//     private _apiService: ApiService
-//   ){
-//     this.getAllEmployeesFromJsonServer();
-//    }
+  constructor(
+    private _apiService: ApiService
+  ){
+    this.getAllEmployeesFromJsonServer();
+   }
 
 
-//   getAllEmployeesFromJsonServer() { 
-//     this._apiService.allEmployees$.subscribe((_allEmployees: I_ifEmployee[]) => {
-//       this.allEmployees = _allEmployees
-//       // _allEmployees.forEach(emp => {
-//       //   this.allEmployees.push(emp);
-//       // });
+  getAllEmployeesFromJsonServer() { 
+    this._apiService.allEmployees$.subscribe((_allEmployees: I_ifEmployee[]) => {
+      this.allEmployees = _allEmployees
+      // _allEmployees.forEach(emp => {
+      //   this.allEmployees.push(emp);
+      // });
       
-//     });
-//   }
-//    //Get Count of Employees attributes
-//    get getEmployeeAktiveCount(){
-//     return this.employeeAktiveCount = this.allEmployees.filter(emp => emp.isActive).length;
-//    }
-//     get getEmployeeInAktiveCount(){
-//     return  this.employeeInAktiveCount = this.allEmployees.filter(emp => !emp.isActive).length;
-//    }
-//     get getEmployeeFemaleCount(){
-//     return  this.employeeFemaleCount = this.allEmployees.filter(emp => emp.gender === 'Weiblich').length;
-//    }
-//     get getEmployeeMaleCount(){
-//     return  this.employeeMaleCount = this.allEmployees.filter(emp => emp.gender === 'Männlich').length;
-//    }
-//     get getEmployeeDiverseCount(){
-//     return  this.employeeDiverseCount = this.allEmployees.filter(emp => emp.gender === 'Divers').length;
-//    }
-//     get getEmployeeUnderAgeCount(){
-//     return this.employeeUnderAgeCount = this.allEmployees.filter(emp => new Date(emp.dateOfBirth) > this.eighteenYearsAgo).length;
-//    }
-//     get getEmoloyeeOfAgeCount(){
-//     return this.emoloyeeOfAgeCount = this.allEmployees.filter(emp => new Date(emp.dateOfBirth) <= this.eighteenYearsAgo).length;
+    });
+  }
+   //Get Count of Employees attributes
+   get getEmployeeAktiveCount(){
+    return this.employeeAktiveCount = this.allEmployees.filter(emp => emp.isActive).length;
+   }
+    get getEmployeeInAktiveCount(){
+    return  this.employeeInAktiveCount = this.allEmployees.filter(emp => !emp.isActive).length;
+   }
+    get getEmployeeFemaleCount(){
+    return  this.employeeFemaleCount = this.allEmployees.filter(emp => emp.gender === 'Weiblich').length;
+   }
+    get getEmployeeMaleCount(){
+    return  this.employeeMaleCount = this.allEmployees.filter(emp => emp.gender === 'Männlich').length;
+   }
+    get getEmployeeDiverseCount(){
+    return  this.employeeDiverseCount = this.allEmployees.filter(emp => emp.gender === 'Divers').length;
+   }
+    get getEmployeeUnderAgeCount(){
+    return this.employeeUnderAgeCount = this.allEmployees.filter(emp => new Date(emp.dateOfBirth) > this.eighteenYearsAgo).length;
+   }
+    get getEmoloyeeOfAgeCount(){
+    return this.emoloyeeOfAgeCount = this.allEmployees.filter(emp => new Date(emp.dateOfBirth) <= this.eighteenYearsAgo).length;
 
-//    }
+   }
 
-// }
 }
+
 

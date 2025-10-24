@@ -56,7 +56,6 @@ export class ShareFilterService {
 
 
   get filteredEmployees() {
-
     return this.allEmployees.filter(emp =>
       (this.filterValueGender === 'alle' || emp.gender === this.filterValueGender) &&
       (this.filterValueDepartment === 'alle' || emp.department === this.filterValueDepartment) &&

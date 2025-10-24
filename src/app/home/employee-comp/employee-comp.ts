@@ -28,7 +28,7 @@ export class EmployeeComp implements OnInit {
   readonly router = inject(Router)
   @Input() employee?: I_ifEmployee;
 
-  @Output() onEmployeeDeleted = new EventEmitter<number>();
+  @Output() onEmployeeDeleted = new EventEmitter<string>();
   
 
 
@@ -41,7 +41,7 @@ export class EmployeeComp implements OnInit {
   }
 
   // On Delete Button
-  onDelete(employeeId: number, element: HTMLElement): void {
+  onDelete(employeeId: string, element: HTMLElement): void {
     this.onEmployeeDeleted.emit(employeeId);
   }
 

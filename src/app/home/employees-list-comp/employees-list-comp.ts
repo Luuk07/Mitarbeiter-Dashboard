@@ -40,7 +40,7 @@ export class EmployeesListComp implements OnInit{
     // }
   }
 
-  onEmployeeDeleted(_employeeId: number): void {
+  onEmployeeDeleted(_employeeId: string): void {
     
 
     //Open Dialog Component
@@ -58,7 +58,7 @@ export class EmployeesListComp implements OnInit{
         // Der Schlüssel ist der Name worunter die Daten im local Storage gespeichert werden.
 
         //localStorage.setItem('employees', JSON.stringify(this._shareDataService.allEmployees));
-        this._apiService.deleteEmployeeById(_employeeId);
+        this._apiService.deleteEmployeeById(_employeeId.toString());
         
         
       }

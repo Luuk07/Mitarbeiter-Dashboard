@@ -1,7 +1,7 @@
 
 //Interface for Employee
 export interface I_ifEmployee{
-  id:number;
+  id:string;
   name:string;
   gender:string;
   email?:string;
