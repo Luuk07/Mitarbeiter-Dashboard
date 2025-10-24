@@ -24,6 +24,7 @@ import { ApiService } from '../services/api-service';
 })
 export class TableComp implements OnInit {
 
+  readonly dataService = inject(ShareDataService);
   readonly filterService = inject(ShareFilterService);
   readonly dialog = inject(MatDialog);
 
@@ -69,6 +70,7 @@ export class TableComp implements OnInit {
   }
 
   onEdit(employee: I_ifEmployee): void {
+    this.dataService.lastRoute = this._route.url;
     this._route.navigate(['/create'], {queryParams: {employeeID: employee?.id?.toString()}});
   }
   

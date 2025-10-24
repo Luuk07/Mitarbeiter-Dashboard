@@ -34,7 +34,7 @@ import { ShareFilterService } from '../filter-comp/share-filter-service';
   styleUrl: './create-comp.css'
 })
 export class CreateComp {
-
+  readonly dataService = inject(ShareDataService);
   readonly dialog = inject(MatDialog);
   readonly filterService = inject(ShareFilterService);
 
@@ -98,11 +98,6 @@ export class CreateComp {
       errors.push('Bitte gib deine Telefonnumer an');
     }
 
-
-    
-  
-   
-
     if(!this.name || !this.name.trim() || 
       !this.email || !this.email.trim() ||
       !this.department || !this.gender || this.phoneNumber === null
@@ -137,7 +132,7 @@ export class CreateComp {
     this.name = this.name.toLowerCase();
   
     //route to home site
-    this._route.navigate(['/home']);
+    this._route.navigate([this.dataService.lastRoute]);
 
   }
 
@@ -222,14 +217,7 @@ export class CreateComp {
     
   }
 
-  // Get emlpoyee by ID
-  // getEmployeeByID(_employeeID: number) {
-  //   this._apiService.getEmployeeById(_employeeID).subscribe((_employee: I_ifEmployee) => {
-  //     return _employee;
-  //   })
-  //   // return this._shareDataService.allEmployees?.find((clEmployee: I_ifEmployee) => clEmployee.id === _employeeID);
-  // }
-  // On Break Up Button -> default data
+  
   onBreakUp()
   {
     this.id = Date.now();
@@ -240,7 +228,7 @@ export class CreateComp {
     this.phoneNumber = 0;
     this.department = '';
     this.isActive = false;
-    this._route.navigate(['/home']);
+    this._route.navigate([this.dataService.lastRoute]);
   }
 
   

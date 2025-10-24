@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, inject} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, OnDestroy, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ShareDataService } from '../create-comp/share-data-service';
 import { ShareFilterService } from './share-filter-service';
@@ -10,6 +10,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { I_ifEmployee } from '../models/interfaces/employee.model';
 import { MatInputModule } from '@angular/material/input'; 
 import { ApiService } from '../services/api-service';
+import { ActivatedRoute } from '@angular/router';
 // Filter Component for Employees
 @Component({
   selector: 'app-filter-comp',
@@ -23,7 +24,8 @@ import { ApiService } from '../services/api-service';
   templateUrl: './filter-comp.html',
   styleUrl: './filter-comp.css'
 })
-export class FilterComp {
+export class FilterComp implements  OnInit {
+  readonly route = inject(ActivatedRoute);
 
   employees: I_ifEmployee[] = [];
   //Inject Services
@@ -74,6 +76,13 @@ export class FilterComp {
   onNameInputChange(value: string) {
     this.filterService.setFilterName(value);
     console.log('Name input changed:', value);
+  }
+
+  // Filter reset after back on home or tabelle 
+  ngOnInit(): void {
+      this.applyFilterGender(this.selectedGender);
+      this.applyFilterDepartment(this.selectedDepartment);
+      this.applyFilterIsActive(this.isAktiv);
   }
 
 }

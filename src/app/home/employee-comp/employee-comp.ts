@@ -22,7 +22,8 @@ import { ShareFilterService } from '../../filter-comp/share-filter-service';
 export class EmployeeComp implements OnInit {
   //Dialog get instanz of MatDialog
   //MatDialog = Is the the service for modale dialogs like the Confirmation Dialog
-  filterService = inject(ShareFilterService);
+  readonly dataService = inject(ShareDataService);
+  readonly filterService = inject(ShareFilterService);
   readonly dialog = inject(MatDialog)
   readonly router = inject(Router)
   @Input() employee?: I_ifEmployee;
@@ -47,6 +48,7 @@ export class EmployeeComp implements OnInit {
   // Navigate to Create Site with employee Data
   navigate2Route() {
     console.log('this.employee?.id',this.employee?.id);
+    this.dataService.lastRoute = this._route.url;
     this._route.navigate(['/create'], {queryParams: {employeeID: this.employee?.id?.toString()}});
   }
 
