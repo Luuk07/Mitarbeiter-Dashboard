@@ -1,3 +1,69 @@
 {
-  "employees": []
+  "employees": [
+    {
+      "id": "1761282882084",
+      "name": "mann",
+      "gender": "Weiblich",
+      "email": "reher@eeg-energie.de",
+      "phoneNumber": 234234,
+      "dateOfBirth": "2016-11-09T23:00:00.000Z",
+      "department": "It",
+      "isActive": false,
+      "today": "2025-10-24T05:51:08.763Z",
+      "age": 9,
+      "photoPath": ""
+    },
+    {
+      "id": "1761282903444",
+      "name": "ululululul",
+      "gender": "Weiblich",
+      "email": "werewr@",
+      "phoneNumber": 345435,
+      "dateOfBirth": "2025-10-22T22:00:00.000Z",
+      "department": "Ausbildung",
+      "isActive": true,
+      "today": "2025-10-24T05:51:23.500Z",
+      "age": 0,
+      "photoPath": ""
+    },
+    {
+      "id": "1761283471924",
+      "name": "jajajaj",
+      "gender": "Männlich",
+      "email": "reher@eeg-energie.de",
+      "phoneNumber": 234234,
+      "dateOfBirth": "2020-01-04T23:00:00.000Z",
+      "department": "It",
+      "isActive": false,
+      "today": "2025-10-24T05:23:56.099Z",
+      "age": 5,
+      "photoPath": ""
+    },
+    {
+      "id": 1761284169380,
+      "name": "huhuhu ",
+      "gender": "Männlich",
+      "email": "luuk.pehlgrim@gmail.com",
+      "phoneNumber": 56345345,
+      "dateOfBirth": "2020-01-04T23:00:00.000Z",
+      "department": "Kfm",
+      "isActive": true,
+      "today": "2025-10-24T05:35:50.088Z",
+      "age": 5,
+      "photoPath": ""
+    },
+    {
+      "id": 1761284194675,
+      "name": "rererer",
+      "gender": "Männlich",
+      "email": "jaja@",
+      "phoneNumber": 324234,
+      "dateOfBirth": "2020-05-03T22:00:00.000Z",
+      "department": "It",
+      "isActive": true,
+      "today": "2025-10-24T05:36:12.033Z",
+      "age": 5,
+      "photoPath": ""
+    }
+  ]
 }

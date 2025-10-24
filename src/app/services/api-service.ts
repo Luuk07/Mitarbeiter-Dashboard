@@ -25,36 +25,57 @@ export class ApiService {
   }
 
   getAllEmployees() {
-    this._http.get<I_ifEmployee[]>(`${this.apiUrl}/employees`).subscribe((employees: I_ifEmployee[]) => {
+    this._http.get<I_ifEmployee[]>(`${this.apiUrl}/employees`).subscribe(
+      {next: (employees: I_ifEmployee[]) => {
       console.log('employees',employees);
       
       this.allEmployeesSubject.next(employees);
       this.allEmployees = employees;
-    });
+    }, error: (error) => {
+      console.error('Error fetching employees:', error);
+    }}
+    );
   }
 
   getEmployeeById(_employeeID: number): Observable<I_ifEmployee> {
     return this._http.get<I_ifEmployee>(`${this.apiUrl}/employees/${_employeeID}`);
   }
 
-  addNewEmployee(_employee: I_ifEmployee) {
-    this._http.post<I_ifEmployee>(`${this.apiUrl}/employees`, _employee).subscribe(() => {
+addNewEmployee(_employee: I_ifEmployee) {
+  this._http.post<I_ifEmployee>(`${this.apiUrl}/employees`, _employee).subscribe({
+    next: () => {
+      console.log(' Neuer Employee hinzugefügt');
       this.getAllEmployees();
-    });
-  }
+    },
+    error: (err) => {
+      console.error('Fehler beim Hinzufügen:', err);
+    },
+    
+  });
+}
 
-  updateEmployee(employee: I_ifEmployee) {
-    this._http.put<I_ifEmployee>(`${this.apiUrl}/employees/${employee.id}`, employee).subscribe(() => {
+updateEmployee(employee: I_ifEmployee) {
+  this._http.put<I_ifEmployee>(`${this.apiUrl}/employees/${employee.id}`, employee).subscribe({
+    next: () => {
+      console.log(`Employee ${employee.id} aktualisiert`);
       this.getAllEmployees();
-    });
-  }
+    },
+    error: (err) => {
+      console.error(`Fehler beim Aktualisieren von ${employee.id}:`, err);
+    },
+  });
+}
 
-   deletEmployeeById(employeeId: number) {
-    this._http.delete<I_ifEmployee>(`${this.apiUrl}/employees/${employeeId}`).subscribe(() => {
+deleteEmployeeById(employeeId: number) {
+  this._http.delete(`${this.apiUrl}/employees/${employeeId}`).subscribe({
+    next: () => {
+      console.log(`Employee ${employeeId} gelöscht`);
       this.getAllEmployees();
-    });;
-  }
+    },
+    error: (err) => {
+      console.error(`Fehler beim Löschen von ${employeeId}:`, err);
+    },
+  });
+}
 
-
-  
 }

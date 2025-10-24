@@ -47,6 +47,7 @@
         Geburtstags:
         <mat-form-field appearance="fill">
           <input
+            [max]="today | date:'yyyy-MM-dd'"
             matInput
             [matDatepicker]="picker"
             [(ngModel)]="birthday"

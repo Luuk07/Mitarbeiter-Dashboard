@@ -12,6 +12,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialog } from '@angular/material/dialog';
 import { RequiredPopup } from './required-popup/required-popup';
+import { DatePipe } from '@angular/common';
 
 import {
   FormControl,
@@ -28,7 +29,7 @@ import { ShareFilterService } from '../filter-comp/share-filter-service';
   selector: 'app-create-comp',
   imports: [FormsModule, MatButtonModule, MatFormFieldModule, 
   MatInputModule, MatDatepickerModule, 
-  MatNativeDateModule, ReactiveFormsModule, MatSelectModule],
+  MatNativeDateModule, ReactiveFormsModule, MatSelectModule, DatePipe],
   templateUrl: './create-comp.html',
   styleUrl: './create-comp.css'
 })
@@ -48,6 +49,7 @@ export class CreateComp {
 
   @Output() employee = new EventEmitter<I_ifEmployee>();
   maxlength: number= 30;
+  
 
   //Employee attributes
   today: Date = new Date();
@@ -96,17 +98,15 @@ export class CreateComp {
       errors.push('Bitte gib deine Telefonnumer an');
     }
 
-    console.log('this.birthday',this.birthday);
+
     
-    if((this.birthday.getDate() > this.today.getDate())){
-      errors.push('Dein Geburtstag kann nicht in der Zukunft liegen!');
-    }
+  
    
 
     if(!this.name || !this.name.trim() || 
       !this.email || !this.email.trim() ||
       !this.department || !this.gender || this.phoneNumber === null
-      || !this.email.includes('@') || (this.birthday.getDate() > this.today.getDate()))
+      || !this.email.includes('@'))
       {
         this.dialog.open(RequiredPopup).afterClosed().subscribe(() => {
           return;
@@ -115,22 +115,11 @@ export class CreateComp {
     }
 
 
-   
-
     // If more than 0 errors -> employee cant be created 
     if (errors.length > 0) {
       console.log(errors.join(', '));
       return;
     }
-
-    //check if current employee should get edited or new created
-    // const index = this._shareDataService.allEmployees.findIndex(emp => emp.id === employeeData.id);
-    // if (index !== -1) {
-    //   this._shareDataService.allEmployees[index] = employeeData;
-    // } 
-    // else{
-    //   this._shareDataService.allEmployees.push(employeeData);
-    // }
 
     this.name = this.name.toLowerCase();
 
@@ -142,23 +131,7 @@ export class CreateComp {
     } else {
       this.addNewEmployee();
     }
-    // Speichere das aktuelle Array aller Mitarbeiter als JSON-String im localStorage unter dem Schlüssel 'employees',
-    // damit die Daten auch nach einem Seitenneuladen im Browser erhalten bleiben.
-    // Der Schlüssel ist der Name worunter die Daten im local Storage gespeichert werden.
-
-    //localStorage.setItem('employees', JSON.stringify(this._shareDataService.allEmployees));
-    // if(!this.id) {
-    //   console.log('in Post');
-    //   this._apiService.addNewEmployee(employeeData).subscribe((newEmployee: I_ifEmployee) => {
-    //     console.log('Neuer Mitarbeiter hinzugefügt:', newEmployee);
-    //   });
-    // } else {
-    //   console.log('this.id', this.id);
-    //   console.log('in Put');
-    //   this._apiService.updateEmployee(employeeData).subscribe((updatedEmployee: I_ifEmployee) => {
-    //     console.log('Mitarbeiter aktualisiert:', updatedEmployee);
-    //   });
-    // }
+  
 
     // save name in lowercase for filtering
     this.name = this.name.toLowerCase();
@@ -218,10 +191,6 @@ export class CreateComp {
 
             this._apiService.getEmployeeById(currentEmployeeID).subscribe((_employee: I_ifEmployee) => {
               if (_employee) {
-                // let selectedEmployee = this.getEmployeeByID(currentEmployeeID);
-                // console.log('selectedEmployee',selectedEmployee);
-    
-                // if (selectedEmployee) 
                   this.setEmployeeAttributes(_employee);
 
               }

@@ -79,7 +79,7 @@ export class TableComp implements OnInit {
        
        //If on 'Ja' 
        if (result) {
-         this._apiService.deletEmployeeById(employeeId);
+         this._apiService.deleteEmployeeById(employeeId);
 
         //  this.setUpTable();
        }
