@@ -16,16 +16,16 @@ import { get } from 'http';
   styleUrl: './header-comp.css'
 })
 export class HeaderComp implements OnInit{
+  // Inject services and router
   readonly data = inject(ShareDataService)
   readonly filter = inject(ShareFilterService)
   readonly router = inject(Router);
+  readonly apiService = inject(ApiService);
 
 
   employees: I_ifEmployee[] = [];
-  filteredEmployees: I_ifEmployee[] = this.filter.filteredEmployees;
-  constructor(private _apiService:ApiService) {
-
-  }
+  //filteredEmployees: I_ifEmployee[] = this.filter.filteredEmployees;
+  
 
   // Check current route
   isOnCreate(): boolean
@@ -47,13 +47,14 @@ export class HeaderComp implements OnInit{
     return this.router.url.startsWith('/home') || this.router.url === '/'
   }
 
+  // Fetch employees from API service
   getEmployee() {
-    this._apiService.allEmployees$.subscribe((_employees) => {
+    this.apiService.allEmployees$.subscribe((_employees) => {
       // console.log('Employees in header', _employees);
       return this.employees = _employees;
     });
   }
-  
+  // On Init, subscribe to router events to get employees
   ngOnInit() {
     this.router.events.subscribe(() => {
       this.getEmployee();

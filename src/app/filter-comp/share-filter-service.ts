@@ -11,7 +11,10 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ShareFilterService {
+  //Inject router and services
   readonly router = inject(Router);
+  readonly service = inject(ShareDataService)
+
   allEmployees: I_ifEmployee[] = [];
   
 
@@ -24,14 +27,14 @@ export class ShareFilterService {
   }
 
   
-
+  // Fetch all employees from the API service
   getAllEmployees() {
     this._apiService.allEmployees$.subscribe((_employees: I_ifEmployee[]) => {
       this.allEmployees = _employees;
     });
   }
 
-  readonly service = inject(ShareDataService)
+  // Filter values
   filterValueGender: string = 'alle';
   filterValueDepartment: string = 'alle';
   filterValueIsActive: boolean;
@@ -54,7 +57,7 @@ export class ShareFilterService {
    
   }
 
-
+  // Get filtered employees based on current filter values
   get filteredEmployees() {
     return this.allEmployees.filter(emp =>
       (this.filterValueGender === 'alle' || emp.gender === this.filterValueGender) &&

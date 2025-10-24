@@ -11,6 +11,7 @@ import { ApiService } from '../services/api-service';
   providedIn: 'root',
 })
 export class ShareDataService  {
+  // Store last route for navigation after create
   lastRoute = '';
 
   allEmployees: I_ifEmployee[] = []; 
@@ -32,14 +33,10 @@ export class ShareDataService  {
     this.getAllEmployeesFromJsonServer();
    }
 
-
+  //Get all Employees from JSON Server
   getAllEmployeesFromJsonServer() { 
     this._apiService.allEmployees$.subscribe((_allEmployees: I_ifEmployee[]) => {
       this.allEmployees = _allEmployees
-      // _allEmployees.forEach(emp => {
-      //   this.allEmployees.push(emp);
-      // });
-      
     });
   }
    //Get Count of Employees attributes

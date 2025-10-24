@@ -46,7 +46,7 @@ export class EmployeeComp implements OnInit {
   }
 
   // Navigate to Create Site with employee Data
-  navigate2Route() {
+  onEdit() {
     console.log('this.employee?.id',this.employee?.id);
     this.dataService.lastRoute = this._route.url;
     this._route.navigate(['/create'], {queryParams: {employeeID: this.employee?.id?.toString()}});

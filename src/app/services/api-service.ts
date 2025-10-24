@@ -10,7 +10,7 @@ import { BehaviorSubject } from 'rxjs';
 export class ApiService {
   private apiUrl = 'http://localhost:3001';
 
-
+  //BehavorSubject to hold all employees
   allEmployeesSubject = new BehaviorSubject<I_ifEmployee[]>([]);
   allEmployees$ = this.allEmployeesSubject.asObservable();
 
@@ -23,7 +23,7 @@ export class ApiService {
     this.getAllEmployees();
     
   }
-
+  //Fetch all Employees from JSON Server
   getAllEmployees() {
     this._http.get<I_ifEmployee[]>(`${this.apiUrl}/employees`).subscribe(
       {next: (employees: I_ifEmployee[]) => {
@@ -36,11 +36,11 @@ export class ApiService {
     }}
     );
   }
-
+  //Fetch Employee by ID
   getEmployeeById(_employeeID: string): Observable<I_ifEmployee> {
     return this._http.get<I_ifEmployee>(`${this.apiUrl}/employees/${_employeeID}`);
   }
-
+//Add new Employee to JSON Server
 addNewEmployee(_employee: I_ifEmployee) {
   console.log('_employee',_employee);
   
@@ -56,6 +56,7 @@ addNewEmployee(_employee: I_ifEmployee) {
   });
 }
 
+//Update Employee in JSON Server
 updateEmployee(employee: I_ifEmployee) {
   this._http.put<I_ifEmployee>(`${this.apiUrl}/employees/${employee.id}`, employee).subscribe({
     next: () => {
@@ -67,7 +68,7 @@ updateEmployee(employee: I_ifEmployee) {
     },
   });
 }
-
+//Delete Employee by ID from JSON Server
 deleteEmployeeById(employeeId: string) {
   this._http.delete(`${this.apiUrl}/employees/${employeeId}`).subscribe({
     next: () => {

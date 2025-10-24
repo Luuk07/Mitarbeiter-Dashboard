@@ -34,12 +34,9 @@ export class EmployeesListComp implements OnInit{
       this.employees = _employees;
     });
 
-    // const newEmployees = this._shareDataService.allEmployees;
-    // if (newEmployees) {
-    //   this.employees = newEmployees;
-    // }
+   
   }
-
+  //On Employee Deleted
   onEmployeeDeleted(_employeeId: string): void {
     
 
@@ -49,18 +46,7 @@ export class EmployeesListComp implements OnInit{
       //If on 'Ja' 
       if (result) {
         console.log('employeeId', _employeeId);
-        // 1. Remove from All Emloyees List
-        // this._shareDataService.allEmployees = this._shareDataService.allEmployees?.filter(emp => emp.id !== employeeId);
-    
-
-        // Speichere das aktuelle Array aller Mitarbeiter als JSON-String im localStorage unter dem Schlüssel 'employees',
-        // damit die Daten auch nach einem Seitenneuladen im Browser erhalten bleiben.
-        // Der Schlüssel ist der Name worunter die Daten im local Storage gespeichert werden.
-
-        //localStorage.setItem('employees', JSON.stringify(this._shareDataService.allEmployees));
         this._apiService.deleteEmployeeById(_employeeId.toString());
-        
-        
       }
     });
   }

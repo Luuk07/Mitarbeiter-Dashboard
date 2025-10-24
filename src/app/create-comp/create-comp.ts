@@ -15,10 +15,6 @@ import { RequiredPopup } from './required-popup/required-popup';
 import { DatePipe } from '@angular/common';
 
 import {
-  FormControl,
-  FormGroupDirective,
-  NgForm,
-  Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
 import { ApiService } from '../services/api-service';
@@ -34,19 +30,19 @@ import { ShareFilterService } from '../filter-comp/share-filter-service';
   styleUrl: './create-comp.css'
 })
 export class CreateComp {
+  //Inject Services
   readonly dataService = inject(ShareDataService);
   readonly dialog = inject(MatDialog);
   readonly filterService = inject(ShareFilterService);
-
+  //Inject router
+  readonly route = inject(ActivatedRoute)
 
   constructor(
-    private _shareDataService: ShareDataService, 
-    private route: ActivatedRoute,
     private _route: Router,
     private _apiService: ApiService
   ){}
 
-
+  // Event emitter to notify parent component of employee creation
   @Output() employee = new EventEmitter<I_ifEmployee>();
   maxlength: number= 30;
   
@@ -65,9 +61,7 @@ export class CreateComp {
 
   //On Confirm Button
   onConfirm() {
-    // Prüft, ob this.id null oder undefined ist -> dann wird eine neue ID mit Date.now() erstellt
-    // Ansonsten wird die vorhandene this.id genommen
-    
+   
     //Save all Errors
     const errors = [];
 
@@ -98,6 +92,7 @@ export class CreateComp {
       errors.push('Bitte gib deine Telefonnumer an');
     }
 
+    // If required fields are missing, open RequiredPopup dialog
     if(!this.name || !this.name.trim() || 
       !this.email || !this.email.trim() ||
       !this.department || !this.gender || this.phoneNumber === null
@@ -115,12 +110,12 @@ export class CreateComp {
       console.log(errors.join(', '));
       return;
     }
-
+    // save name in lowercase for filtering
     this.name = this.name.toLowerCase();
 
-    console.log('this.id',this.id);
     
-
+    
+    // Determine whether to add a new employee or update an existing one
     if (this.id !== null) {
       this.updateExistingEmployee();
     } else {
@@ -131,11 +126,12 @@ export class CreateComp {
     // save name in lowercase for filtering
     this.name = this.name.toLowerCase();
   
-    //route to home site
+    //route back to last side
     this._route.navigate([this.dataService.lastRoute]);
 
   }
 
+  //Update or Add Employee
   getUpdateOrAddEmployee() {
     const id = this.id ? this.id : Date.now();
 
@@ -161,13 +157,13 @@ export class CreateComp {
     return employeeData;
   }
 
-
+  // Add new Employee
   addNewEmployee() {
     let employeeData: I_ifEmployee = this.getUpdateOrAddEmployee();
 
     this._apiService.addNewEmployee(employeeData);
   }
-
+  // Update existing Employee
   updateExistingEmployee() {
     this._apiService.updateEmployee(this.getUpdateOrAddEmployee());
   }
@@ -191,8 +187,6 @@ export class CreateComp {
               }
               
             })
-              // return this._shareDataService.allEmployees?.find((clEmployee: I_ifEmployee) => clEmployee.id === _employeeID);
-
           }
         });
       
@@ -213,11 +207,11 @@ export class CreateComp {
       this.birthday = new Date(_employee.dateOfBirth);
     }
 
-    console.log('employee to edit', _employee);
+   
     
   }
 
-  
+  // Break up and route back
   onBreakUp()
   {
     this.id = Date.now();

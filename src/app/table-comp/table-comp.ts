@@ -16,8 +16,10 @@ import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 
 
-
+// Register German locale data
 registerLocaleData(localeDe);
+
+// Table Component to display employees in a table format
 
 @Component({
   selector: 'app-table-comp',
@@ -26,13 +28,13 @@ registerLocaleData(localeDe);
   styleUrl: './table-comp.css',
   providers: [{ provide: LOCALE_ID, useValue: 'de-DE' }]
 })
-export class TableComp implements OnInit {
+export class TableComp {
 
+  // Injecting the ShareDataService to access employee data
   readonly dataService = inject(ShareDataService);
   readonly filterService = inject(ShareFilterService);
   readonly dialog = inject(MatDialog);
 
-  // Injecting the ShareDataService to access employee data
  
   // Data source for the table
   dataSource = new MatTableDataSource<I_ifEmployee>([]);
@@ -48,36 +50,30 @@ export class TableComp implements OnInit {
     public _shareDataService:ShareDataService,
     private _apiService: ApiService
   ) {
-
-
     this.dataSource.data = this.filterService.filteredEmployees;
-
-    console.log('this.filterService.filteredEmployees',this.filterService.filteredEmployees);
-    
   }
 
+  // Getter for the Template to access the data source
   get onDataSource() {
     this.dataSource.data = this.filterService.filteredEmployees;
     return  this.dataSource;
   }
   
-  ngOnInit(): void {    
-    this.setUpTable();
-  }
+  
 
+  // After the view is initialized, set the sort property of the data source
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
   }
 
-  setUpTable() {
-     
-  }
 
+  // Navigate to Create Site with employee Data
   onEdit(employee: I_ifEmployee): void {
     this.dataService.lastRoute = this._route.url;
     this._route.navigate(['/create'], {queryParams: {employeeID: employee?.id?.toString()}});
   }
   
+  // On Delete Button
   onDelete(employeeId: number, element: HTMLElement): void {
      console.log('Löschen von Mitarbeiter mit ID:', employeeId);
      //Open Dialog Component

@@ -11,6 +11,8 @@ import { I_ifEmployee } from '../models/interfaces/employee.model';
 import { MatInputModule } from '@angular/material/input'; 
 import { ApiService } from '../services/api-service';
 import { ActivatedRoute } from '@angular/router';
+
+
 // Filter Component for Employees
 @Component({
   selector: 'app-filter-comp',
@@ -24,20 +26,25 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './filter-comp.html',
   styleUrl: './filter-comp.css'
 })
-export class FilterComp implements  OnInit {
-  readonly route = inject(ActivatedRoute);
 
-  employees: I_ifEmployee[] = [];
-  //Inject Services
+export class FilterComp implements  OnInit {
+  //Inject router and services
+  readonly route = inject(ActivatedRoute);
   readonly service = inject(ShareDataService)
   readonly filterService = inject(ShareFilterService)
+
+  employees: I_ifEmployee[] = [];
+  
+
   //Data source for table
   dataSource = new MatTableDataSource();
+
   //Filter values
   selectedGender = 'alle';
   selectedDepartment = 'alle';
   isAktiv: boolean;
   name = '';
+
   //Define filter function
   //If filter is empty, show all
   //Otherwise filter according to selected values
@@ -72,7 +79,7 @@ export class FilterComp implements  OnInit {
     }
   }
 
-  
+  // On Name Input Change
   onNameInputChange(value: string) {
     this.filterService.setFilterName(value);
     console.log('Name input changed:', value);
