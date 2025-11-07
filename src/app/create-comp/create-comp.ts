@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
 import { I_ifEmployee } from '../models/interfaces/employee.model';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { ShareDataService } from './share-data-service';
 import { ActivatedRoute } from '@angular/router';
 import {Router} from '@angular/router'
@@ -30,6 +30,10 @@ import { ShareFilterService } from '../filter-comp/share-filter-service';
   styleUrl: './create-comp.css'
 })
 export class CreateComp {
+
+  onSubmit(form: NgForm){
+    console.log('Form submitted!', form.value);
+  }
   //Inject Services
   readonly dataService = inject(ShareDataService);
   readonly dialog = inject(MatDialog);

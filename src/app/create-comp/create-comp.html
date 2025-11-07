@@ -1,4 +1,4 @@
-<div>
+<form #form="ngForm">
   <div class="shape">
    
     @if(name){
@@ -14,8 +14,8 @@
     <div class="attributes">
       <label>
          Name:
-        <input class="input" [(ngModel)]="name" [attr.maxlength]="maxlength" />
-        @if (!name) {
+        <input class="input" [(ngModel)]="name" required name="name"[attr.maxlength]="maxlength" />
+        @if (form.form.controls['name']?.invalid && form.form.controls['name']?.touched) {
           <div class="pflicht" >
               Name ist ein Pflichtfeld!
           </div>
@@ -29,14 +29,14 @@
       <label>
         Geschlecht:
         <mat-form-field>
-          <mat-select [(ngModel)]="gender"> 
+          <mat-select [(ngModel)]="gender" required name="gender"> 
             <mat-option value="" disabled selected>Bitte wählen</mat-option>
             <mat-option value="Männlich">Männlich</mat-option>
             <mat-option value="Weiblich">Weiblich</mat-option>
             <mat-option value="Divers">Divers</mat-option>
           </mat-select>
        </mat-form-field>
-         @if (!gender) {
+         @if (form.form.controls['gender']?.invalid && form.form.controls['gender']?.touched) {
           <div class="pflicht">
               Geschlecht ist ein Pflichtfeld!
           </div>
@@ -65,15 +65,10 @@
       <br />
       <label>
         Email:
-      <input class="input" [(ngModel)]="email" type="email" name="email" pattern=".*@.*" [attr.maxlength]="maxlength" />
-       @if (!email) {
+      <input class="input" [(ngModel)]="email" type="email" name="email" required email pattern=".*@.*" [attr.maxlength]="maxlength" />
+       @if (form.form.controls['email']?.invalid && form.form.controls['email']?.touched) {
           <div class="pflicht">
               Email ist ein Pflichtfeld!
-          </div>
-        }
-        @if(!email.includes('@')){
-           <div class="pflicht">
-              Email muss ein '@' enthalten!
           </div>
         }
         @if(email.length == maxlength){
@@ -85,8 +80,8 @@
       <br />
       <label>
         Telefonnummer:
-        <input class="input" [(ngModel)]="phoneNumber" type="number" name="telefonnummer"/>
-         @if (!phoneNumber) {
+        <input class="input" [(ngModel)]="phoneNumber" required type="number" name="phoneNumber"/>
+         @if (form.form.controls['phoneNumber']?.invalid && form.form.controls['phoneNumber']?.touched) {
         <div class="pflicht">
             Telefonnummer ist ein Pflichtfeld!
         </div>
@@ -97,7 +92,7 @@
       <label>
         Abteilung:
         <mat-form-field>
-          <mat-select [(ngModel)]="department"> 
+          <mat-select [(ngModel)]="department" name="department"> 
             <mat-option value="" disabled selected>Bitte wählen</mat-option>
             <mat-option value="It">It</mat-option>
             <mat-option value="Ausbildung">Ausbildung</mat-option>
@@ -105,7 +100,7 @@
             <mat-option value="Pfm">Pfm</mat-option>
           </mat-select>
        </mat-form-field>
-         @if (!department) {
+         @if (form.form.controls['department']?.invalid && form.form.controls['department']?.touched) {
           <div class="pflicht">
               Abteilung ist Pflichtfeld!
           </div>
@@ -124,4 +119,4 @@
       </button>
     </div>
   </div>
-</div>
+</form>
