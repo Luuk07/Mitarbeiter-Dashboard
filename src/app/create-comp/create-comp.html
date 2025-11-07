@@ -15,7 +15,7 @@
       <label>
          Name:
         <input class="input" [(ngModel)]="name" required name="name"[attr.maxlength]="maxlength" />
-        @if (form.form.controls['name']?.invalid && form.form.controls['name']?.touched) {
+        @if ((form.form.controls['name']?.invalid && form.form.controls['name']?.touched) || confirmed && form.form.controls['name']?.invalid) {
           <div class="pflicht" >
               Name ist ein Pflichtfeld!
           </div>
@@ -32,7 +32,7 @@
             <mat-option value="Divers">Divers</mat-option>
           </mat-select>
        </mat-form-field>
-         @if (form.form.controls['gender']?.invalid && form.form.controls['gender']?.touched) {
+         @if ((form.form.controls['gender']?.invalid && form.form.controls['gender']?.touched) || confirmed && form.form.controls) {
           <div class="pflicht">
               Geschlecht ist ein Pflichtfeld!
           </div>
@@ -52,17 +52,13 @@
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-       @if (birthday > today) {
-          <div class="pflicht">
-              Dein Geburtstag kann nicht in der Zukunft liegen!
-          </div>
-        }
+
       </label>
       <br />
       <label>
         Email:
-      <input class="input" [(ngModel)]="email" type="email" name="email" required email pattern=".*@.*" [attr.maxlength]="maxlength" />
-       @if (form.form.controls['email']?.invalid && form.form.controls['email']?.touched) {
+      <input class="input" [(ngModel)]="email" type="email" name="email" required email [attr.maxlength]="maxlength" />
+       @if ((form.form.controls['email']?.invalid && form.form.controls['email']?.touched) || confirmed && form.form.controls['email']?.invalid) {
           <div class="pflicht">
               Email ist ein Pflichtfeld!
           </div>
@@ -77,7 +73,7 @@
       <label>
         Telefonnummer:
         <input class="input" [(ngModel)]="phoneNumber" required type="number" name="phoneNumber"/>
-         @if (form.form.controls['phoneNumber']?.invalid && form.form.controls['phoneNumber']?.touched) {
+         @if ((form.form.controls['phoneNumber']?.invalid && form.form.controls['phoneNumber']?.touched)||confirmed && form.form.controls['phoneNumber']?.invalid) {
         <div class="pflicht">
             Telefonnummer ist ein Pflichtfeld!
         </div>
@@ -88,7 +84,7 @@
       <label>
         Abteilung:
         <mat-form-field>
-          <mat-select [(ngModel)]="department" name="department"> 
+          <mat-select [(ngModel)]="department" required name="department"> 
             <mat-option value="" disabled selected>Bitte wählen</mat-option>
             <mat-option value="It">It</mat-option>
             <mat-option value="Ausbildung">Ausbildung</mat-option>
@@ -96,7 +92,7 @@
             <mat-option value="Pfm">Pfm</mat-option>
           </mat-select>
        </mat-form-field>
-         @if (form.form.controls['department']?.invalid && form.form.controls['department']?.touched) {
+         @if ((form.form.controls['department']?.invalid && form.form.controls['department']?.touched) || confirmed && form.form.controls['department']?.invalid) {
           <div class="pflicht">
               Abteilung ist Pflichtfeld!
           </div>
@@ -107,7 +103,7 @@
         Ist Aktiv:
         <input class="input" [(ngModel)]="isActive" type="checkbox" name="istAktiv" />
       </label>
-      <button class="onConfirm" (click)="onConfirm()">
+      <button class="onConfirm" (click)="onConfirm(form)">
         Bestätigen
       </button>
       <button class="onBreakUp" (click)="onBreakUp()">

@@ -46,6 +46,7 @@ export class CreateComp {
   @Output() employee = new EventEmitter<I_ifEmployee>();
   maxlength: number= 30;
   
+  confirmed: boolean = false;
 
   //Employee attributes
   today: Date = new Date();
@@ -60,7 +61,9 @@ export class CreateComp {
   isActive = false;
 
   //On Confirm Button
-  onConfirm() {
+  onConfirm(form: NgForm) {
+    this.confirmed = true;
+    console.log('form:', form.value);
    
     //Save all Errors
     const errors = [];
