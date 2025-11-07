@@ -30,10 +30,6 @@ import { ShareFilterService } from '../filter-comp/share-filter-service';
   styleUrl: './create-comp.css'
 })
 export class CreateComp {
-
-  onSubmit(form: NgForm){
-    console.log('Form submitted!', form.value);
-  }
   //Inject Services
   readonly dataService = inject(ShareDataService);
   readonly dialog = inject(MatDialog);
@@ -228,6 +224,19 @@ export class CreateComp {
     this.isActive = false;
     this._route.navigate([this.dataService.lastRoute]);
   }
+
+  onReset()
+  {
+    this.id = null;
+    this.birthday = new Date();
+    this.name= '';
+    this.email = '';
+    this.phoneNumber = 0;
+    this.gender = '';
+    this.department = '';
+    this.isActive = false;
+  }
+
 
   
   

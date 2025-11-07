@@ -109,6 +109,26 @@
   box-shadow: 3px 3px 10px rgba(0, 139, 139, 0.3);
 }
 
+.onReset{
+  background-color: sandybrown; 
+  color: #ffffff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 2px 2px 6px rgba(0, 139, 139, 0.2);
+  align-self: flex-start; /
+}
+
+.onReset:hover {
+  background-color: sienna;
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 10px rgba(0, 139, 139, 0.3);
+}
+
 .pflicht {
   color: #d93025; 
   font-weight: 600; 
