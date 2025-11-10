@@ -15,7 +15,7 @@
       <label>
          Name:
         <input class="input" [(ngModel)]="name" required name="name"[attr.maxlength]="maxlength" />
-        @if ((form.form.controls['name']?.invalid && form.form.controls['name']?.touched) || confirmed && form.form.controls['name']?.invalid) {
+        @if (((form.form.controls['name']?.invalid && form.form.controls['name']?.touched) || confirmed && form.form.controls['name']?.invalid) ) {
           <div class="pflicht" >
               Name ist ein Pflichtfeld!
           </div>
@@ -32,7 +32,7 @@
             <mat-option value="Divers">Divers</mat-option>
           </mat-select>
        </mat-form-field>
-         @if ((form.form.controls['gender']?.invalid && form.form.controls['gender']?.touched) || confirmed && form.form.controls) {
+         @if (((form.form.controls['gender']?.invalid && form.form.controls['gender']?.touched) || confirmed && form.form.controls) ) {
           <div class="pflicht">
               Geschlecht ist ein Pflichtfeld!
           </div>

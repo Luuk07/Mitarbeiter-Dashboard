@@ -47,6 +47,7 @@ export class CreateComp {
   maxlength: number= 30;
   
   confirmed: boolean = false;
+  reseted: boolean = false;
 
   //Employee attributes
   today: Date = new Date();
@@ -56,7 +57,7 @@ export class CreateComp {
   name= '';
   email? = '';
   gender = '';
-  phoneNumber? = 0;
+  phoneNumber? = null;
   department = '';
   isActive = false;
 
@@ -104,9 +105,7 @@ export class CreateComp {
         this.dialog.open(RequiredPopup).afterClosed().subscribe(() => {
           return;
         }) 
-        
     }
-
 
     // If more than 0 errors -> employee cant be created 
     if (errors.length > 0) {
@@ -152,6 +151,7 @@ export class CreateComp {
       age: this.age,
       photoPath: ''
     };
+
     //calculate age
     this.birthday = new Date(employeeData.dateOfBirth);
     this.today = new Date(employeeData.today);
@@ -230,12 +230,12 @@ export class CreateComp {
 
   onReset()
   {
-    this.confirmed = false;
+    this.confirmed = true;
     this.id = null;
     this.birthday = new Date();
     this.name= '';
     this.email = '';
-    this.phoneNumber = 0;
+    this.phoneNumber = null;
     this.gender = '';
     this.department = '';
     this.isActive = false;
