@@ -1,8 +1,7 @@
 
 import { Injectable, OnInit} from '@angular/core';
 import { I_ifEmployee } from '../models/interfaces/employee.model';
-import { T } from '@angular/cdk/keycodes'
-import { BehaviorSubject } from 'rxjs';
+
 import { ApiService } from '../services/api-service';
 
 
@@ -13,6 +12,7 @@ import { ApiService } from '../services/api-service';
 export class ShareDataService  {
   // Store last route for navigation after create
   lastRoute = '';
+  missingValues: string[] = [];
 
   allEmployees: I_ifEmployee[] = []; 
   

@@ -74,10 +74,12 @@ export class CreateComp {
     if(!this.name || this.name.trim() === '')
     {
       errors.push('Bitte gib einen Namen ein');
+      this.dataService.missingValues.push('Name');
     }
     if(!this.email || this.email.trim() === '')
     {
      errors.push('Bitte gib eine Email ein');
+     this.dataService.missingValues.push('Email');
     }
     if(!this.email.includes('@'))
     {
@@ -86,14 +88,17 @@ export class CreateComp {
     if(this.department === '')
     {
       errors.push('Bitte gib eine Abteilung an');
+      this.dataService.missingValues.push('Abteilung');
     }
     if(this.gender === '')
     {
       errors.push('Bitte gib ein Geschlecht an');
+      this.dataService.missingValues.push('Geschlecht');
     }
     if(this.phoneNumber === null)
     {
       errors.push('Bitte gib deine Telefonnumer an');
+      this.dataService.missingValues.push('Telefonnummer');
     }
 
     // If required fields are missing, open RequiredPopup dialog
@@ -103,6 +108,7 @@ export class CreateComp {
       || !this.email.includes('@'))
       {
         this.dialog.open(RequiredPopup).afterClosed().subscribe(() => {
+          this.dataService.missingValues = [];
           return;
         }) 
     }

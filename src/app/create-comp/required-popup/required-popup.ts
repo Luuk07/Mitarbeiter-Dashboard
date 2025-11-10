@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { share } from 'rxjs';
+import { ShareDataService } from '../share-data-service';
 
 // Popup to show required fields
 @Component({
@@ -9,5 +11,5 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
   styleUrl: './required-popup.css'
 })
 export class RequiredPopup {
-
+  data = inject(ShareDataService);
 }
