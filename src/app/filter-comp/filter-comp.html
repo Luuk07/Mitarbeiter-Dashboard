@@ -44,6 +44,17 @@
       </mat-select>
     </mat-form-field>
 
+    <mat-form-field class="filter" appearance="outline">
+      <mat-label>Altersgruppe</mat-label>
+      <mat-select [(value)]="isAktiv" (selectionChange)="applyFilterAgeGroup($event.value)">
+        <mat-option [value]="{min: 0 }">Alle</mat-option>
+          <mat-option [value]="{min: 0, max: 19}">U20</mat-option>
+          <mat-option [value]="{min: 20, max: 50}">20-50</mat-option>
+          <mat-option [value]="{min: 51, max: 60}">51-60</mat-option>
+          <mat-option [value]="{min: 61}">Ü60</mat-option>
+      </mat-select>
+    </mat-form-field>
+
   <div>
     <mat-form-field>
       <mat-label>Mitarbeiter</mat-label>

@@ -39,6 +39,7 @@ export class ShareFilterService {
   filterValueDepartment: string = 'alle';
   filterValueIsActive: boolean;
   filterValueName: string = '';
+  filterValueAgeGroup: {min: number, max?: number};
    
   // Setter methods to update filter values
   setFilterGendner(value: string ) {    
@@ -55,15 +56,22 @@ export class ShareFilterService {
   setFilterName(value: string ) {
     this.filterValueName = value;
   }
+  setFilterAgeGroup(value: {min: number, max?: number} ) {
+    console.log('value', value);
+    this.filterValueAgeGroup = value;
+  }
 
   // Get filtered employees based on current filter values
   get filteredEmployees() {
-    return this.allEmployees.filter(emp =>
+    return this.allEmployees.filter(emp =>{
+      const ageGroup = this.filterValueAgeGroup;
+      const inAgeGroup = !ageGroup || (emp.age >= ageGroup.min && emp.age < (ageGroup.max ?? Infinity));
+      return(
       (this.filterValueGender === 'alle' || emp.gender === this.filterValueGender) &&
       (this.filterValueDepartment === 'alle' || emp.department === this.filterValueDepartment) &&
       (this.filterValueIsActive === undefined || emp.isActive === this.filterValueIsActive) &&
-      (emp.name.toLowerCase().includes(this.filterValueName.toLowerCase())
-    ));
+      (emp.name.toLowerCase().includes(this.filterValueName.toLowerCase()) && inAgeGroup))
+  });
   }
 
  

@@ -11,6 +11,7 @@ import { I_ifEmployee } from '../models/interfaces/employee.model';
 import { MatInputModule } from '@angular/material/input'; 
 import { ApiService } from '../services/api-service';
 import { ActivatedRoute } from '@angular/router';
+import { min } from 'rxjs';
 
 
 // Filter Component for Employees
@@ -77,6 +78,15 @@ export class FilterComp implements  OnInit {
       this.dataSource.filter = filterValue.toString();
       this.filterService.setFilterIsActive(filterValue);
     }
+  }
+  applyFilterAgeGroup(filterValue: {min: number, max?: number}) { 
+    if(filterValue === undefined){
+      this.filterService.setFilterAgeGroup({min: 0});
+    }else{
+    this.dataSource.filter = JSON.stringify(filterValue);
+    console.log('Age Group filter applied:', filterValue);
+    this.filterService.setFilterAgeGroup(filterValue);
+  }
   }
 
   // On Name Input Change

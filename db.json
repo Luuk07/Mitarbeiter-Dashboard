@@ -64,6 +64,19 @@
       "today": "2025-11-10T08:18:10.693Z",
       "age": 0,
       "photoPath": ""
+    },
+    {
+      "id": "1762764698526",
+      "name": "alt",
+      "gender": "Männlich",
+      "email": "luuk.pehlgrim@gmail.com",
+      "phoneNumber": 234234,
+      "dateOfBirth": "1835-06-08T23:06:32.000Z",
+      "department": "It",
+      "isActive": true,
+      "today": "2025-11-10T08:51:17.436Z",
+      "age": 190,
+      "photoPath": ""
     }
   ]
 }
