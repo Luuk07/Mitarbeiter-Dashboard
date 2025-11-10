@@ -54,7 +54,6 @@ export class ShareFilterService {
 
   setFilterName(value: string ) {
     this.filterValueName = value;
-   
   }
 
   // Get filtered employees based on current filter values
@@ -62,8 +61,9 @@ export class ShareFilterService {
     return this.allEmployees.filter(emp =>
       (this.filterValueGender === 'alle' || emp.gender === this.filterValueGender) &&
       (this.filterValueDepartment === 'alle' || emp.department === this.filterValueDepartment) &&
-      (this.filterValueIsActive === undefined || emp.isActive === this.filterValueIsActive)
-    );
+      (this.filterValueIsActive === undefined || emp.isActive === this.filterValueIsActive) &&
+      (emp.name.toLowerCase().includes(this.filterValueName.toLowerCase())
+    ));
   }
 
  

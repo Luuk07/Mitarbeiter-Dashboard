@@ -1,28 +1,15 @@
 {
   "employees": [
     {
-      "id": "1761291087986",
-      "name": "nein",
-      "gender": "Weiblich",
-      "email": "reher@eeg-energie.de",
-      "phoneNumber": 345435,
-      "dateOfBirth": "2025-10-24T07:31:21.127Z",
-      "department": "It",
-      "isActive": false,
-      "today": "2025-10-24T10:25:22.654Z",
-      "age": 0,
-      "photoPath": ""
-    },
-    {
       "id": "1761292401444",
-      "name": "neu",
+      "name": "lalala",
       "gender": "Männlich",
       "email": "pehlgrim@eeg-energie.de",
       "phoneNumber": 324234,
       "dateOfBirth": "2025-10-24T07:53:09.525Z",
       "department": "Ausbildung",
-      "isActive": true,
-      "today": "2025-10-24T07:53:09.525Z",
+      "isActive": false,
+      "today": "2025-11-10T07:03:27.188Z",
       "age": 0,
       "photoPath": ""
     },
@@ -53,16 +40,16 @@
       "photoPath": ""
     },
     {
-      "id": "1762501027403",
-      "name": "luuk",
+      "id": "1762758263107",
+      "name": "mann",
       "gender": "Männlich",
-      "email": "werewrew",
-      "phoneNumber": 45344,
-      "dateOfBirth": "2025-11-07T07:36:57.737Z",
-      "department": "It",
-      "isActive": false,
-      "today": "2025-11-07T07:36:57.737Z",
-      "age": 0,
+      "email": "erwerwe@werwereeeie.de",
+      "phoneNumber": 2342343,
+      "dateOfBirth": "2002-01-06T23:00:00.000Z",
+      "department": "Ausbildung",
+      "isActive": true,
+      "today": "2025-11-10T07:04:26.705Z",
+      "age": 23,
       "photoPath": ""
     }
   ]

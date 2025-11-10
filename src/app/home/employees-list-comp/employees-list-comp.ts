@@ -29,12 +29,9 @@ export class EmployeesListComp implements OnInit{
 
   //Take Data from service
   addFromService() {
-
     this._apiService.allEmployees$.subscribe((_employees: I_ifEmployee[]) => {
       this.employees = _employees;
-    });
-
-   
+    });   
   }
   //On Employee Deleted
   onEmployeeDeleted(_employeeId: string): void {

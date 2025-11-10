@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:3001';
+  private apiUrl = 'http://localhost:3000';
 
   //BehavorSubject to hold all employees
   allEmployeesSubject = new BehaviorSubject<I_ifEmployee[]>([]);
