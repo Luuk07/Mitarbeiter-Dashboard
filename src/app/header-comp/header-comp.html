@@ -3,6 +3,7 @@
     <p>
       <a routerLink="/create">Create</a>
     </p>
+
   }
   @if(!isOnHome()){
     <p>
@@ -20,6 +21,22 @@
       <a routerLink="/table">Tabelle</a>
     </p> 
   }
+<div class="mainTitel">
+  @if(isOnCreate()){
+    <h1>CREATE</h1> 
+  }
+  @if(isOnHome()){
+    <h1>HOME</h1>
+  }
+  
+  @if(isOnStatistic()){
+    <h1>STATISTIC</h1>
+  }
+   @if(isOnTable()){
+    <h1>TABELLE</h1>
+  }
+</div>
+ 
   <h1 class ="title" >
     Alle Mitarbeiter: {{employees.length}}
     <p>

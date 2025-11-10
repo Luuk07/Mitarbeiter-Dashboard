@@ -62,3 +62,16 @@ body {
 .blink {
   animation: blink-animation 0.6s ease;
 }
+
+.mainTitel {
+  position: absolute;      /* absolute Positionierung relativ zum Viewport */
+  top: 0;                  /* ganz oben */
+  left: 50%;               /* horizontal mittig */
+  transform: translateX(-50%); /* horizontale Zentrierung */
+  font-size: 2rem;
+  font-weight: 400;
+  color: #64e58b;
+  margin: 0;               /* keine Standard-Margins */
+  padding: 1rem 0;         /* etwas Luft oben/unten im Text */
+  text-align: center;
+}
