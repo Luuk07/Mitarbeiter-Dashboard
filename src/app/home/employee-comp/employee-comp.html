@@ -11,7 +11,7 @@
       <p>Telefonnummer: {{employee?.phoneNumber}} </p>
       <p>Abteilung: {{employee?.department}} </p>
       <p>Alter: {{employee?.age}}</p>
-      <p>Letzte Änderung am: {{employee?.today | date:'medium' }}</p>
+      <p>Letzte Änderung am: {{employee?.today | date:'dd.MM.yyyy, HH:mm '}}Uhr</p>
       <p [ngClass]="{'isActive': employee.isActive, 'isNotActive':!employee.isActive}">Ist Aktiv: {{employee?.isActive  ? 'Ja' : 'Nein'}} </p>
     </div>
 
