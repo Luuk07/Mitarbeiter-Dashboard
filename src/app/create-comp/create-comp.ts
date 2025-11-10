@@ -230,6 +230,7 @@ export class CreateComp {
 
   onReset()
   {
+    this.confirmed = false;
     this.id = null;
     this.birthday = new Date();
     this.name= '';

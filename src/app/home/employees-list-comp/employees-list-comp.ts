@@ -33,6 +33,7 @@ export class EmployeesListComp implements OnInit{
       this.employees = _employees;
     });   
   }
+
   //On Employee Deleted
   onEmployeeDeleted(_employeeId: string): void {
     
