@@ -33,6 +33,9 @@
 .statistic-container .age {
   border-left: 4px solid #ff9800;
 }
+.statistic-container .department {
+  border-left: 4px solid #9c27b0;
+}
 
 @media (max-width: 768px) {
   .statistic-container {

@@ -25,7 +25,11 @@ export class ShareDataService  {
   employeeMaleCount: number = 0;
   employeeDiverseCount: number = 0;
   employeeUnderAgeCount: number = 0;
-  emoloyeeOfAgeCount: number = 0;
+  employeeOfAgeCount: number = 0;
+  employeeITCount: number = 0;
+  employeeAusbildungCount: number = 0;
+  employeePfmCount: number = 0;
+  employeeKfmCount: number = 0;
   
   constructor(
     private _apiService: ApiService
@@ -59,8 +63,19 @@ export class ShareDataService  {
     return this.employeeUnderAgeCount = this.allEmployees.filter(emp => new Date(emp.dateOfBirth) > this.eighteenYearsAgo).length;
    }
     get getEmoloyeeOfAgeCount(){
-    return this.emoloyeeOfAgeCount = this.allEmployees.filter(emp => new Date(emp.dateOfBirth) <= this.eighteenYearsAgo).length;
-
+    return this.employeeOfAgeCount = this.allEmployees.filter(emp => new Date(emp.dateOfBirth) <= this.eighteenYearsAgo).length;
+   }
+    get getEmoloyeeITCount(){
+    return  this.employeeITCount = this.allEmployees.filter(emp => emp.department === 'It').length;
+   }
+    get getEmoloyeeAusbildungCount(){
+    return  this.employeeAusbildungCount = this.allEmployees.filter(emp => emp.department === 'Ausbildung').length;
+   }
+    get getEmployeePfmCount(){
+    return  this.employeePfmCount = this.allEmployees.filter(emp => emp.department === 'Pfm').length;
+   }
+    get getEmployeeKfmCount(){
+    return  this.employeeKfmCount = this.allEmployees.filter(emp => emp.department === 'Kfm').length;
    }
 
 }

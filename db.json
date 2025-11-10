@@ -14,32 +14,6 @@
       "photoPath": ""
     },
     {
-      "id": "1761292414580",
-      "name": "luuk",
-      "gender": "Weiblich",
-      "email": "luuk.pehlgrim@gmail.com",
-      "phoneNumber": 324324,
-      "dateOfBirth": "2025-10-04T22:00:00.000Z",
-      "department": "Ausbildung",
-      "isActive": true,
-      "today": "2025-10-24T07:53:25.985Z",
-      "age": 0,
-      "photoPath": ""
-    },
-    {
-      "id": "1762500787190",
-      "name": "luuk",
-      "gender": "Männlich",
-      "email": "luuk.pehlgrim@gmail.com",
-      "phoneNumber": 234234,
-      "dateOfBirth": "2025-11-02T23:00:00.000Z",
-      "department": "Ausbildung",
-      "isActive": false,
-      "today": "2025-11-07T07:32:30.152Z",
-      "age": 0,
-      "photoPath": ""
-    },
-    {
       "id": "1762758263107",
       "name": "mann",
       "gender": "Männlich",
@@ -53,19 +27,6 @@
       "photoPath": ""
     },
     {
-      "id": "1762762711568",
-      "name": "luuk",
-      "gender": "Divers",
-      "email": "luuk.pehlgrim@gmail.com",
-      "phoneNumber": 234234,
-      "dateOfBirth": "2025-11-10T08:18:10.693Z",
-      "department": "It",
-      "isActive": false,
-      "today": "2025-11-10T08:18:10.693Z",
-      "age": 0,
-      "photoPath": ""
-    },
-    {
       "id": "1762764698526",
       "name": "alt",
       "gender": "Männlich",
@@ -76,6 +37,45 @@
       "isActive": true,
       "today": "2025-11-10T08:51:17.436Z",
       "age": 190,
+      "photoPath": ""
+    },
+    {
+      "id": "1762767960452",
+      "name": "fefeedede",
+      "gender": "Weiblich",
+      "email": "wewe@q",
+      "phoneNumber": 345345,
+      "dateOfBirth": "2006-01-07T23:00:00.000Z",
+      "department": "It",
+      "isActive": true,
+      "today": "2025-11-10T09:45:24.176Z",
+      "age": 19,
+      "photoPath": ""
+    },
+    {
+      "id": "1762768124244",
+      "name": "blablabla",
+      "gender": "Weiblich",
+      "email": "pehlgrim@eeg-energie.de",
+      "phoneNumber": 1212123123,
+      "dateOfBirth": "2025-11-10T09:48:18.869Z",
+      "department": "Ausbildung",
+      "isActive": true,
+      "today": "2025-11-10T09:48:18.869Z",
+      "age": 0,
+      "photoPath": ""
+    },
+    {
+      "id": "1762768578979",
+      "name": "neu",
+      "gender": "Weiblich",
+      "email": "fghfgh@eeg-energie.de",
+      "phoneNumber": 345435,
+      "dateOfBirth": "1642-01-12T23:06:32.000Z",
+      "department": "It",
+      "isActive": false,
+      "today": "2025-11-10T09:55:35.828Z",
+      "age": 383,
       "photoPath": ""
     }
   ]
