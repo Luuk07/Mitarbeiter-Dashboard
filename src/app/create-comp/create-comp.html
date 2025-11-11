@@ -75,8 +75,8 @@
         Telefonnummer:
         <mat-form-field class="example-full-width">
           <mat-label>Telefonnummer</mat-label>
-          <input type="number" matInput [formControl]="phonenNumberFormControl" [attr.maxlength]="maxlength">
-           Aktuelle Länge: {{phonenNumberFormControl?.value.toString().length}}
+          <input type="text" matInput [formControl]="phonenNumberFormControl" [attr.maxlength]="maxlength" >
+           Aktuelle Länge: {{phonenNumberFormControl?.value?.toString().length}} / {{maxlength}}
           @if (phonenNumberFormControl.hasError('required')) {
             <mat-error>Telefonnummer ist <strong>erforerlich</strong></mat-error>
           }
