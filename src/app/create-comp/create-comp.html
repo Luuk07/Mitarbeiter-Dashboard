@@ -21,25 +21,23 @@
           <input type="name" matInput [formControl]="nameFormControl" [attr.maxlength]="maxlength">
            Aktuelle Länge: {{nameFormControl.value?.length}} / {{maxlength}}
           @if (nameFormControl.hasError('required')) {
-            <mat-error>Name is <strong>required</strong></mat-error>
+            <mat-error>Name ist <strong>erforderlich</strong></mat-error>
           }
         </mat-form-field>
       </label>
       <label>
         Geschlecht:
-        <mat-form-field>
+        <mat-form-field class="example-full-width">
           <mat-select [(ngModel)]="gender" required name="gender"> 
             <mat-option value="" disabled selected>Bitte wählen</mat-option>
             <mat-option value="Männlich">Männlich</mat-option>
             <mat-option value="Weiblich">Weiblich</mat-option>
             <mat-option value="Divers">Divers</mat-option>
           </mat-select>
-       </mat-form-field>
-         @if (((form.form.controls['gender']?.invalid && form.form.controls['gender']?.touched) || confirmed && form.form.controls['gender']?.invalid) ) {
-          <div class="pflicht">
-              Geschlecht ist ein Pflichtfeld!
-          </div>
-       }
+          @if (((form.form.controls['gender']?.invalid && form.form.controls['gender']?.touched) || confirmed && form.form.controls['gender']?.invalid) ) {
+            <mat-error>Gender ist <strong>erforderlich</strong></mat-error>
+          }
+        </mat-form-field>
       </label>
       <br />
       <label>
@@ -68,7 +66,7 @@
             <mat-error>Please enter a valid email address</mat-error>
           }
           @if (emailFormControl.hasError('required')) {
-            <mat-error>Email is <strong>required</strong></mat-error>
+            <mat-error>Email ist <strong>erforderlich</strong></mat-error>
           }
         </mat-form-field>
       </label>
@@ -80,7 +78,7 @@
           <input type="number" matInput [formControl]="phonenNumberFormControl" [attr.maxlength]="maxlength">
            Aktuelle Länge: {{phonenNumberFormControl.value?.length}}
           @if (phonenNumberFormControl.hasError('required')) {
-            <mat-error>Telefonnummer is <strong>required</strong></mat-error>
+            <mat-error>Telefonnummer ist <strong>erforderlich</strong></mat-error>
           }
         </mat-form-field>
 
@@ -88,7 +86,7 @@
       <br />
       <label>
         Abteilung:
-        <mat-form-field>
+        <mat-form-field class="example-full-width">
           <mat-select [(ngModel)]="department" required name="department"> 
             <mat-option value="" disabled selected>Bitte wählen</mat-option>
             <mat-option value="It">It</mat-option>
@@ -96,12 +94,10 @@
             <mat-option value="Kfm">Kfm</mat-option>
             <mat-option value="Pfm">Pfm</mat-option>
           </mat-select>
-       </mat-form-field>
-         @if ((form.form.controls['department']?.invalid && form.form.controls['department']?.touched) || confirmed && form.form.controls['department']?.invalid) {
-          <div class="pflicht">
-              Abteilung ist Pflichtfeld!
-          </div>
-       }
+          @if ((form.form.controls['department']?.invalid && form.form.controls['department']?.touched) || confirmed && form.form.controls['department']?.invalid) {
+            <mat-error>Abteilung ist <strong>erforderlich</strong></mat-error>
+          }
+        </mat-form-field>
       </label>
       <br />
       <label>
