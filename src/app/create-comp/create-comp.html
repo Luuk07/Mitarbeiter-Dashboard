@@ -63,7 +63,7 @@
           <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" [attr.maxlength]="maxlength">
            Aktuelle Länge: {{emailFormControl.value?.length}} / {{maxlength}}
           @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
-            <mat-error>Please enter a valid email address</mat-error>
+            <mat-error>Bitte gib eine korrekte Email Adresse ein</mat-error>
           }
           @if (emailFormControl.hasError('required')) {
             <mat-error>Email ist <strong>erforerlich</strong></mat-error>
@@ -76,7 +76,7 @@
         <mat-form-field class="example-full-width">
           <mat-label>Telefonnummer</mat-label>
           <input type="number" matInput [formControl]="phonenNumberFormControl" [attr.maxlength]="maxlength">
-           Aktuelle Länge: {{phonenNumberFormControl.value?.length}}
+           Aktuelle Länge: {{phonenNumberFormControl?.value.toString().length}}
           @if (phonenNumberFormControl.hasError('required')) {
             <mat-error>Telefonnummer ist <strong>erforerlich</strong></mat-error>
           }
