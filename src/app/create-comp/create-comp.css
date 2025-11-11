@@ -24,6 +24,25 @@
   justify-content: center;
 }
 
+.mitarbeiter-name {
+  word-break: break-all;
+  margin: 0;
+  padding: 0;
+}
+
+.name-inner {
+  max-width: 600px;           /* nie breiter als 600px */
+  width: 100%;                /* schrumpft mit dem Viewport */
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+
+
+
+
+
 
 .attributes {
   display: flex;
@@ -148,10 +167,6 @@
   color: red;
 }
 
-input.ng-invalid.ng-touched {
-  border-color: red;
-  box-shadow: 0 0 5px red;
- 
-}
+
 
 

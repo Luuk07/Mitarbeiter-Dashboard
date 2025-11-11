@@ -77,6 +77,19 @@
       "today": "2025-11-10T09:55:35.828Z",
       "age": 383,
       "photoPath": ""
+    },
+    {
+      "id": "1762848013113",
+      "name": "luuk",
+      "gender": "Männlich",
+      "email": "erer@adad",
+      "phoneNumber": 234234,
+      "dateOfBirth": "2025-11-11T08:00:00.305Z",
+      "department": "Ausbildung",
+      "isActive": true,
+      "today": "2025-11-11T08:00:00.305Z",
+      "age": 0,
+      "photoPath": ""
     }
   ]
 }

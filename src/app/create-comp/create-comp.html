@@ -1,9 +1,11 @@
 <form #form="ngForm">
+  
+
   <div class="shape">
-   
-    @if(name){
+
+    @if(nameFormControl.value){
       <div class="name"> 
-          {{name}}
+          <p class="mitarbeiter-name">{{nameFormControl.value}}</p>
       </div>
     }@else {
       <div class="name">
@@ -13,20 +15,15 @@
       
     <div class="attributes">
       <label>
-         Name:
-        <input class="input" [(ngModel)]="name" required name="name" [attr.maxlength]="maxlength" /> 
-        Aktuelle Länge: {{name?.length || 0}} / {{maxlength}}
-        @if (((form.form.controls['name']?.invalid && form.form.controls['name']?.touched) || confirmed && form.form.controls['name']?.invalid) ) {
-          <div class="pflicht" >
-              Name ist ein Pflichtfeld!
-          </div>
-       }
-        @if(name.length == maxlength){
-           <div class="pflicht">
-              Maximale Länge erreicht!
-          </div>
-        }
-
+        Name:
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input type="name" matInput [formControl]="nameFormControl" [attr.maxlength]="maxlength">
+           Aktuelle Länge: {{nameFormControl.value?.length}} / {{maxlength}}
+          @if (nameFormControl.hasError('required')) {
+            <mat-error>Name is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
       </label>
       <label>
         Geschlecht:
@@ -63,28 +60,29 @@
       <br />
       <label>
         Email:
-      <input class="input" [(ngModel)]="email" type="email" name="email" required email [attr.maxlength]="maxlength" />
-      Aktuelle Länge: {{email?.length || 0}} / {{maxlength}}
-       @if ((form.form.controls['email']?.invalid && form.form.controls['email']?.touched) || confirmed && form.form.controls['email']?.invalid) {
-          <div class="pflicht">
-              Email ist ein Pflichtfeld!
-          </div>
-        }
-        @if(email.length == maxlength){
-           <div class="pflicht">
-              Maximale Länge erreicht!
-          </div>
-        }
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" [attr.maxlength]="maxlength">
+           Aktuelle Länge: {{emailFormControl.value?.length}} / {{maxlength}}
+          @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+            <mat-error>Please enter a valid email address</mat-error>
+          }
+          @if (emailFormControl.hasError('required')) {
+            <mat-error>Email is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
       </label>
       <br />
       <label>
         Telefonnummer:
-        <input class="input" [(ngModel)]="phoneNumber" required type="number" name="phoneNumber"/>
-         @if ((form.form.controls['phoneNumber']?.invalid && form.form.controls['phoneNumber']?.touched)||confirmed && form.form.controls['phoneNumber']?.invalid) {
-        <div class="pflicht">
-            Telefonnummer ist ein Pflichtfeld!
-        </div>
-        }
+        <mat-form-field class="example-full-width">
+          <mat-label>Telefonnummer</mat-label>
+          <input type="number" matInput [formControl]="phonenNumberFormControl" [attr.maxlength]="maxlength">
+           Aktuelle Länge: {{phonenNumberFormControl.value?.length}}
+          @if (phonenNumberFormControl.hasError('required')) {
+            <mat-error>Telefonnummer is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
 
       </label>
       <br />
