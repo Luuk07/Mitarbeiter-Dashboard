@@ -44,7 +44,7 @@ export class CreateComp {
 
   // Event emitter to notify parent component of employee creation
   @Output() employee = new EventEmitter<I_ifEmployee>();
-  maxlength: number= 30;
+
   
   confirmed: boolean = false;
   reseted: boolean = false;
@@ -60,6 +60,10 @@ export class CreateComp {
   phoneNumber? = null;
   department = '';
   isActive = false;
+
+
+  maxlength: number = 64;
+  
 
   //On Confirm Button
   onConfirm(form: NgForm) {

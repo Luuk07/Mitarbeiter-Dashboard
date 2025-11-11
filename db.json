@@ -8,8 +8,8 @@
       "phoneNumber": 324234,
       "dateOfBirth": "2025-10-24T07:53:09.525Z",
       "department": "Ausbildung",
-      "isActive": false,
-      "today": "2025-11-10T07:03:27.188Z",
+      "isActive": true,
+      "today": "2025-11-10T13:19:48.728Z",
       "age": 0,
       "photoPath": ""
     },

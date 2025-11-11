@@ -14,7 +14,8 @@
     <div class="attributes">
       <label>
          Name:
-        <input class="input" [(ngModel)]="name" required name="name" [attr.maxlength]="maxlength" />
+        <input class="input" [(ngModel)]="name" required name="name" [attr.maxlength]="maxlength" /> 
+        Aktuelle Länge: {{name?.length || 0}} / {{maxlength}}
         @if (((form.form.controls['name']?.invalid && form.form.controls['name']?.touched) || confirmed && form.form.controls['name']?.invalid) ) {
           <div class="pflicht" >
               Name ist ein Pflichtfeld!
@@ -62,13 +63,14 @@
       <br />
       <label>
         Email:
-      <input class="input" [(ngModel)]="email" type="email" name="email" required email maxlength="50" />
+      <input class="input" [(ngModel)]="email" type="email" name="email" required email [attr.maxlength]="maxlength" />
+      Aktuelle Länge: {{email?.length || 0}} / {{maxlength}}
        @if ((form.form.controls['email']?.invalid && form.form.controls['email']?.touched) || confirmed && form.form.controls['email']?.invalid) {
           <div class="pflicht">
               Email ist ein Pflichtfeld!
           </div>
         }
-        @if(email.length == 50){
+        @if(email.length == maxlength){
            <div class="pflicht">
               Maximale Länge erreicht!
           </div>

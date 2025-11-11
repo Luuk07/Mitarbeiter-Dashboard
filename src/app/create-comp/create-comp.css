@@ -1,5 +1,5 @@
 .shape {
-  width: 600px;
+  width: 800px;
   padding: 24px 32px;
   margin: 30px auto;
   border: 2px solid #008b8b;
@@ -20,7 +20,10 @@
   margin-bottom: 24px;
   text-align: center;
   user-select: none;
+  display: flex;
+  justify-content: center;
 }
+
 
 .attributes {
   display: flex;
