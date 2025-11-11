@@ -1,5 +1,4 @@
-<form [formGroup]="userForm">
-
+<form #form="ngForm">
   
 
   <div class="shape">
@@ -22,7 +21,7 @@
           <input type="name" matInput [formControl]="nameFormControl" [attr.maxlength]="maxlength">
            Aktuelle Länge: {{nameFormControl.value?.length}} / {{maxlength}}
           @if (nameFormControl.hasError('required')) {
-            <mat-error>Name is <strong>required</strong></mat-error>
+            <mat-error>Name ist <strong>erforerlich</strong></mat-error>
           }
         </mat-form-field>
       </label>
@@ -35,8 +34,8 @@
             <mat-option value="Weiblich">Weiblich</mat-option>
             <mat-option value="Divers">Divers</mat-option>
           </mat-select>
-          @if (((userForm.controls['gender']?.invalid && userForm.controls['gender']?.touched) || confirmed && userForm.controls['gender']?.invalid) ) {
-            <mat-error>Gender is <strong>required</strong></mat-error>
+          @if (((form.form.controls['gender']?.invalid && form.form.controls['gender']?.touched) || confirmed && form.form.controls['gender']?.invalid) ) {
+            <mat-error>Gender ist <strong>erforerlich</strong></mat-error>
           }
         </mat-form-field>
       </label>
@@ -67,7 +66,7 @@
             <mat-error>Please enter a valid email address</mat-error>
           }
           @if (emailFormControl.hasError('required')) {
-            <mat-error>Email is <strong>required</strong></mat-error>
+            <mat-error>Email ist <strong>erforerlich</strong></mat-error>
           }
         </mat-form-field>
       </label>
@@ -79,7 +78,7 @@
           <input type="number" matInput [formControl]="phonenNumberFormControl" [attr.maxlength]="maxlength">
            Aktuelle Länge: {{phonenNumberFormControl.value?.length}}
           @if (phonenNumberFormControl.hasError('required')) {
-            <mat-error>Telefonnummer is <strong>required</strong></mat-error>
+            <mat-error>Telefonnummer ist <strong>erforerlich</strong></mat-error>
           }
         </mat-form-field>
 
@@ -95,10 +94,8 @@
             <mat-option value="Kfm">Kfm</mat-option>
             <mat-option value="Pfm">Pfm</mat-option>
           </mat-select>
-          @if ((userForm.controls['department']?.invalid && userForm.controls['department']?.touched) || confirmed && userForm.controls['department']?.invalid) {
-            <div class="pflicht">
-              Abteilung ist Pflichtfeld!
-            </div>
+          @if ((form.form.controls['department']?.invalid && form.form.controls['department']?.touched) || confirmed && form.form.controls['department']?.invalid) {
+            <mat-error>Abteilung ist <strong>erforerlich</strong></mat-error>
           }
         </mat-form-field>
       </label>
@@ -107,7 +104,7 @@
         Ist Aktiv:
         <input class="input" [(ngModel)]="isActive" type="checkbox" name="istAktiv" />
       </label>
-      <button class="onConfirm" (click)="onConfirm(userForm.value)">
+      <button class="onConfirm" (click)="onConfirm(form)">
         Bestätigen
       </button>
       <button class="onBreakUp" (click)="onBreakUp()">

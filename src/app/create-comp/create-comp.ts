@@ -56,28 +56,18 @@ export class CreateComp {
   id = null;
   birthday: Date = new Date();
   age = 0;
-  //nameFormControl = new FormControl('', [Validators.required]);
-  // emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  // phonenNumberFormControl? = new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]);
+  nameFormControl = new FormControl('', [Validators.required]);
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  phonenNumberFormControl? = new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]);
   gender = '';
   department = '';
   isActive = false;
 
   userForm: FormGroup = new FormGroup({
-    nameFormControl: new FormControl('', [Validators.required]),
-    emailFormControl: new FormControl('', [Validators.required, Validators.email]),
-    phonenNumberFormControl: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)])
+    //nameFormControl: new FormControl('', [Validators.required]),
+    //emailFormControl: new FormControl('', [Validators.required, Validators.email]),
+    //phonenNumberFormControl: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)])
   })
-
-  get nameFormControl(){
-    return this.userForm.get('nameFormControl') as FormControl
-  }
-   get emailFormControl(){
-    return this.userForm.get('emailFormControl') as FormControl
-  }
-   get phonenNumberFormControl(){
-    return this.userForm.get('phonenNumberFormControl') as FormControl
-  }
 
   maxlength: number = 64;
   
@@ -92,17 +82,17 @@ export class CreateComp {
 
     //Error handler
   
-    if(!this.userForm.controls['nameFormControl'].value || this.userForm.controls['nameFormControl'].value.trim() === '')
+    if(!this.nameFormControl || this.nameFormControl.value.trim() === '')
     {
       errors.push('Bitte gib einen Namen ein');
       this.dataService.missingValues.push('Name');
     }
-    if(!this.userForm.controls['emailFormControl'].value || this.userForm.controls['emailFormControl'].value.trim() === '')
+    if(!this.emailFormControl || this.emailFormControl.value.trim() === '')
     {
      errors.push('Bitte gib eine Email ein');
      this.dataService.missingValues.push('Email');
     }
-    if(!this.userForm.controls['emailFormControl'].value.includes('@'))
+    if(!this.emailFormControl.value.includes('@'))
     {
       errors.push('Ungültige Email: Kein @ enthalten')
     }
@@ -116,17 +106,17 @@ export class CreateComp {
       errors.push('Bitte gib ein Geschlecht an');
       this.dataService.missingValues.push('Geschlecht');
     }
-    if(!this.userForm.controls['phonenNumberFormControl'].value)
+    if(!this.phonenNumberFormControl.value)
     {
       errors.push('Bitte gib deine Telefonnumer an');
       this.dataService.missingValues.push('Telefonnummer');
     }
 
     // If required fields are missing, open RequiredPopup dialog
-    if(!this.userForm.controls['nameFormControl'].value || !this.userForm.controls['nameFormControl'].value.trim() || 
-      !this.userForm.controls['emailFormControl'].value || !this.userForm.controls['emailFormControl'].value.trim() ||
-      !this.department || !this.gender || !this.userForm.controls['phonenNumberFormControl'].value 
-      || !this.userForm.controls['emailFormControl'].value.includes('@'))
+    if(!this.nameFormControl || !this.nameFormControl.value.trim() || 
+      !this.emailFormControl || !this.emailFormControl.value.trim() ||
+      !this.department || !this.gender || !this.phonenNumberFormControl.value 
+      || !this.emailFormControl.value.includes('@'))
       {
         this.dialog.open(RequiredPopup).afterClosed().subscribe(() => {
           this.dataService.missingValues = [];
@@ -140,7 +130,7 @@ export class CreateComp {
       return;
     }
     // save name in lowercase for filtering
-    this.userForm.controls['nameFormControl'] = new FormControl(this.userForm.controls['nameFormControl'].value.toLowerCase());
+    this.nameFormControl = new FormControl(this.nameFormControl.value.toLowerCase());
 
     
     
@@ -153,7 +143,7 @@ export class CreateComp {
   
 
     // save name in lowercase for filtering
-    this.userForm.controls['nameFormControl'] = new FormControl(this.userForm.controls['nameFormControl'].value.toLowerCase());
+    this.nameFormControl = new FormControl(this.nameFormControl.value.toLowerCase());
   
     //route back to last side
     this._route.navigate([this.dataService.lastRoute]);
@@ -167,10 +157,10 @@ export class CreateComp {
     //Take over the data from input fields    
     const employeeData: I_ifEmployee = {
       id: id.toString(),
-      name: this.userForm.controls['nameFormControl'].value,
+      name: this.nameFormControl.value,
       gender: this.gender,
-      email: this.userForm.controls['emailFormControl'].value,
-      phoneNumber: Number(this.userForm.controls['phonenNumberFormControl'].value),
+      email: this.emailFormControl.value,
+      phoneNumber: Number(this.phonenNumberFormControl.value),
       dateOfBirth: this.birthday,
       department: this.department,
       isActive: this.isActive,
@@ -225,10 +215,10 @@ export class CreateComp {
   setEmployeeAttributes(_employee?: I_ifEmployee) {
     if (_employee) {
       this.id = _employee.id;
-      this.userForm.controls['nameFormControl'] = new FormControl(_employee.name);
-      this.userForm.controls['emailFormControl'] = new FormControl(_employee.email); 
+      this.nameFormControl= new FormControl(_employee.name);
+      this.emailFormControl = new FormControl(_employee.email); 
       this.gender = _employee.gender;
-      this.userForm.controls['phonenNumberFormControl'] = new FormControl (_employee.phoneNumber?.toString());
+      this.phonenNumberFormControl = new FormControl (_employee.phoneNumber?.toString());
       this.department = _employee.department;
       this.isActive = _employee.isActive;
       this.birthday = new Date(_employee.dateOfBirth);
@@ -243,10 +233,10 @@ export class CreateComp {
   {
     this.id = Date.now();
     this.birthday = new Date();
-    this.userForm.controls['nameFormControl']= new FormControl('', [Validators.required]);
-    this.userForm.controls['emailFormControl'] = new FormControl('', [Validators.required, Validators.email]);
+    this.nameFormControl= new FormControl('', [Validators.required]);
+    this.emailFormControl = new FormControl('', [Validators.required, Validators.email]);
     this.gender = '';
-   this.userForm.controls['phonenNumberFormControl'] = new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]);
+    this.phonenNumberFormControl = new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]);
     this.department = '';
     this.isActive = false;
     this._route.navigate([this.dataService.lastRoute]);
@@ -257,9 +247,9 @@ export class CreateComp {
     this.confirmed = true;
     this.id = null;
     this.birthday = new Date();
-    this.userForm.controls['nameFormControl'] = new FormControl('', [Validators.required]);
-    this.userForm.controls['emailFormControl'] = new FormControl('', [Validators.required, Validators.email]);
-    this.userForm.controls['phonenNumberFormControl'] = new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]);
+    this.nameFormControl= new FormControl('', [Validators.required]);
+    this.emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+    this.phonenNumberFormControl = new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]);
     this.gender = '';
     this.department = '';
     this.isActive = false;
