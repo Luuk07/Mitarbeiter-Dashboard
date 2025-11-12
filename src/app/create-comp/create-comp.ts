@@ -160,7 +160,7 @@ export class CreateComp {
       name: this.nameFormControl.value,
       gender: this.gender,
       email: this.emailFormControl.value,
-      phoneNumber: Number(this.phonenNumberFormControl.value),
+      phoneNumber: this.phonenNumberFormControl.value,
       dateOfBirth: this.birthday,
       department: this.department,
       isActive: this.isActive,

@@ -1,6 +1,6 @@
 <div>
   <ul>
-    @for(employee of employees; track employee.id){
+    @for(employee of employees; track employee){
       @if(((filterService.filteredEmployees.includes(employee)) 
         )){
         @if(filterService.filterValueName === '' || employee.name.includes(filterService.filterValueName.toLowerCase())){

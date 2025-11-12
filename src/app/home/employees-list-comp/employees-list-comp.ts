@@ -36,15 +36,13 @@ export class EmployeesListComp implements OnInit{
 
   //On Employee Deleted
   onEmployeeDeleted(_employeeId: string): void {
-    
-
     //Open Dialog Component
     this._matDialog.open(DelConfirmationPopup).afterClosed().subscribe((result) => {
       
       //If on 'Ja' 
       if (result) {
         console.log('employeeId', _employeeId);
-        this._apiService.deleteEmployeeById(_employeeId.toString());
+        this._apiService.deleteEmployeeById(_employeeId);
       }
     });
   }

@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'http://localhost:5085';
 
   //BehavorSubject to hold all employees
   allEmployeesSubject = new BehaviorSubject<I_ifEmployee[]>([]);
@@ -19,13 +19,29 @@ export class ApiService {
   constructor(
     private _http: HttpClient
   ) { 
+    
+   // this.getEmployeeesAPI();
 
     this.getAllEmployees();
-    
+
+    //this.postEmployee();
+
+
   }
+
+  getEmployeeesAPI() {
+    console.log('API Method called');
+    
+    this._http.get(`${this.apiUrl}/api/employees`).subscribe(data => {
+      console.log('data',data);
+      
+    })
+  }
+
+
   //Fetch all Employees from JSON Server
   getAllEmployees() {
-    this._http.get<I_ifEmployee[]>(`${this.apiUrl}/employees`).subscribe(
+    this._http.get<I_ifEmployee[]>(`${this.apiUrl}/api/employees`).subscribe(
       {next: (employees: I_ifEmployee[]) => {
       console.log('employees',employees);
       
@@ -38,27 +54,27 @@ export class ApiService {
   }
   //Fetch Employee by ID
   getEmployeeById(_employeeID: string): Observable<I_ifEmployee> {
-    return this._http.get<I_ifEmployee>(`${this.apiUrl}/employees/${_employeeID}`);
+    return this._http.get<I_ifEmployee>(`${this.apiUrl}/api/employees/${_employeeID}`);
   }
-//Add new Employee to JSON Server
-addNewEmployee(_employee: I_ifEmployee) {
-  console.log('_employee',_employee);
-  
-  this._http.post<I_ifEmployee>(`${this.apiUrl}/employees`, _employee).subscribe({
-    next: () => {
-      console.log(' Neuer Employee hinzugefügt');
-      this.getAllEmployees();
-    },
-    error: (err) => {
-      console.error('Fehler beim Hinzufügen:', err);
-    },
+  //Add new Employee to JSON Server
+  addNewEmployee(_employee: I_ifEmployee) {
+    console.log('_employee',_employee);
     
-  });
-}
+    this._http.post<I_ifEmployee>(`${this.apiUrl}/api/employee`, _employee).subscribe({
+      next: () => {
+        console.log(' Neuer Employee hinzugefügt');
+        this.getAllEmployees();
+      },
+      error: (err) => {
+        console.error('Fehler beim Hinzufügen:', err);
+      },
+      
+    });
+  }
 
 //Update Employee in JSON Server
 updateEmployee(employee: I_ifEmployee) {
-  this._http.put<I_ifEmployee>(`${this.apiUrl}/employees/${employee.id}`, employee).subscribe({
+  this._http.put<I_ifEmployee>(`${this.apiUrl}/api/employees/${employee.id}`, employee).subscribe({
     next: () => {
       console.log(`Employee ${employee.id} aktualisiert`);
       this.getAllEmployees();
@@ -69,8 +85,10 @@ updateEmployee(employee: I_ifEmployee) {
   });
 }
 //Delete Employee by ID from JSON Server
-deleteEmployeeById(employeeId: string) {
-  this._http.delete(`${this.apiUrl}/employees/${employeeId}`).subscribe({
+deleteEmployeeById(employeeId: string) {  
+  console.log('employeeId dele',employeeId);
+  
+  this._http.delete(`${this.apiUrl}/api/employees/${employeeId}`).subscribe({
     next: () => {
       console.log(`Employee ${employeeId} gelöscht`);
       this.getAllEmployees();

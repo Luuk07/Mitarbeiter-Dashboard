@@ -5,7 +5,7 @@ export interface I_ifEmployee{
   name:string;
   gender:string;
   email?:string;
-  phoneNumber?: number;
+  phoneNumber?: string;
   dateOfBirth:Date;
   department:string;
   isActive:boolean;
